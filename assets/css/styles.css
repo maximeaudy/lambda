@@ -1,0 +1,38 @@
+body{
+    font-family: 'Ubuntu', sans-serif;
+    background-color:#e8e8e8;
+    color:#484444;
+    margin:0;
+}
+
+a{
+    color:#484444;
+}
+
+label, input{
+    display: block;
+}
+
+/* CENTER */
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-y{
+    display: flex;
+    align-items: center;
+}
+
+.center-x{
+    display: flex;
+    justify-content: center;
+}
+
+/* SEO */
+#content {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}

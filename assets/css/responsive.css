@@ -1,0 +1,19 @@
+/* Large desktops */
+@media (min-width: 1200px) {
+
+}
+
+/* Desktops */
+@media (min-width: 992px){
+
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+
+}
+
+/* Phones */
+@media (max-width: 576px) {
+
+}
