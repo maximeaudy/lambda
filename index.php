@@ -1,4 +1,10 @@
-<?php require('app/Autoload.php'); ?>
+<?php 
+use lambda\Form;
+use lambda\Date;
+use lambda\Error;
+
+require('app/Autoload.php'); 
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -11,16 +17,61 @@
         <link rel="stylesheet" href="assets/css/styles.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <link rel="stylesheet" href="assets/css/mystrap.css">
+
+        <!-- JS -->
+        <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
     </head>
     <body>
+        <!-- <?php
+        try{
+            $pdo = new PDO('mysql:host=dedeed;dbname=dedeed', 'frfrrf', 'frrfrf');
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+            $pdo->exec("SET NAMES 'UTF8'");
+        }catch(Exception $e){
+            $error = new Error($e);
+            $error->getError();
+            // echo $e->getCode().'<br>';
+            // echo $e->getLine().'<br>';
+            // echo $e->getMessage().'<br>';
+            // echo $e->getFile().'<br>';
+            // echo $e->getPrevious().'<br>';
+        }
+        ?> -->
         <?php 
-            // $Auj = new Date();
+            //Méthode sans ajax
+            //$login = new Form('lambda\Users', 'login', array_merge($_POST, array('editor' => 'username,password')));
+            //Méthode avec ajax
+            $login = new Form('lambda\Users', 'login', array(), true); 
+        ?>
+        <p>Connaitre l'ID de la personne via son nom d'utilisateur</p>
+        <?php  
+            $login->form(array('method' => 'post', 'id' => 'login'));
 
-            // echo $Auj->number(5848494, '/');
+            $login->input(
+                array(
+                'label' => 'Nom d\'utilisateur',
+                'name' => 'username',
+                'type' => 'text'
+                )
+            );
 
-            // echo $Auj->full(1114448444);
-            echo 'Il y a ';
-            echo Date::before(1536759000);
+            $login->input(
+                array(
+                    'type' => 'submit',
+                    'name' => 'login',
+                    'value' => 'Valider'
+                )
+            );
+
+            $login->endform();
+        ?>
+        <!-- VOIR COMMENT RECUPERER LES VALEURS VIA AJAX METHODE LA PLUS SIMPLE -->
+        <?php 
+            //Date
+            $date_now = '1538665976';
+            echo $date_now.'<br>';
+
+            Date::before($date_now).'<br>';
         ?>
     </body>
 </html>

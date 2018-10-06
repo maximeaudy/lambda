@@ -1,0 +1,628 @@
+[1mdiff --git a/.idea/vcs.xml b/.idea/vcs.xml[m
+[1mdeleted file mode 100644[m
+[1mindex 94a25f7..0000000[m
+[1m--- a/.idea/vcs.xml[m
+[1m+++ /dev/null[m
+[36m@@ -1,6 +0,0 @@[m
+[31m-<?xml version="1.0" encoding="UTF-8"?>[m
+[31m-<project version="4">[m
+[31m-  <component name="VcsDirectoryMappings">[m
+[31m-    <mapping directory="$PROJECT_DIR$" vcs="Git" />[m
+[31m-  </component>[m
+[31m-</project>[m
+\ No newline at end of file[m
+[1mdiff --git a/.idea/workspace.xml b/.idea/workspace.xml[m
+[1mdeleted file mode 100644[m
+[1mindex edd7b81..0000000[m
+[1m--- a/.idea/workspace.xml[m
+[1m+++ /dev/null[m
+[36m@@ -1,209 +0,0 @@[m
+[31m-<?xml version="1.0" encoding="UTF-8"?>[m
+[31m-<project version="4">[m
+[31m-  <component name="ChangeListManager">[m
+[31m-    <list default="true" id="16f75788-da33-4677-8e73-1c4a3ef08da8" name="Default Changelist" comment="" />[m
+[31m-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />[m
+[31m-    <option name="SHOW_DIALOG" value="false" />[m
+[31m-    <option name="HIGHLIGHT_CONFLICTS" value="true" />[m
+[31m-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />[m
+[31m-    <option name="LAST_RESOLUTION" value="IGNORE" />[m
+[31m-  </component>[m
+[31m-  <component name="FUSProjectUsageTrigger">[m
+[31m-    <session id="774288149">[m
+[31m-      <usages-collector id="statistics.lifecycle.project">[m
+[31m-        <counts>[m
+[31m-          <entry key="project.closed" value="1" />[m
+[31m-          <entry key="project.open.time.0" value="1" />[m
+[31m-          <entry key="project.open.time.4" value="1" />[m
+[31m-          <entry key="project.opened" value="2" />[m
+[31m-        </counts>[m
+[31m-      </usages-collector>[m
+[31m-      <usages-collector id="statistics.file.extensions.open">[m
+[31m-        <counts>[m
+[31m-          <entry key="php" value="4" />[m
+[31m-        </counts>[m
+[31m-      </usages-collector>[m
+[31m-      <usages-collector id="statistics.file.types.open">[m
+[31m-        <counts>[m
+[31m-          <entry key="PHP" value="4" />[m
+[31m-        </counts>[m
+[31m-      </usages-collector>[m
+[31m-      <usages-collector id="statistics.file.extensions.edit">[m
+[31m-        <counts>[m
+[31m-          <entry key="txt" value="2" />[m
+[31m-        </counts>[m
+[31m-      </usages-collector>[m
+[31m-      <usages-collector id="statistics.file.types.edit">[m
+[31m-        <counts>[m
+[31m-          <entry key="PLAIN_TEXT" value="2" />[m
+[31m-        </counts>[m
+[31m-      </usages-collector>[m
+[31m-    </session>[m
+[31m-  </component>[m
+[31m-  <component name="FileEditorManager">[m
+[31m-    <leaf>[m
+[31m-      <file pinned="false" current-in-tab="true">[m
+[31m-        <entry file="file://$PROJECT_DIR$/index.php">[m
+[31m-          <provider selected="true" editor-type-id="text-editor">[m
+[31m-            <state relative-caret-position="357">[m
+[31m-              <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />[m
+[31m-            </state>[m
+[31m-          </provider>[m
+[31m-        </entry>[m
+[31m-      </file>[m
+[31m-    </leaf>[m
+[31m-  </component>[m
+[31m-  <component name="Git.Settings">[m
+[31m-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />[m
+[31m-  </component>[m
+[31m-  <component name="IdeDocumentHistory">[m
+[31m-    <option name="CHANGED_PATHS">[m
+[31m-      <list>[m
+[31m-        <option value="$PROJECT_DIR$/app/Users.php" />[m
+[31m-      </list>[m
+[31m-    </option>[m
+[31m-  </component>[m
+[31m-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />[m
+[31m-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />[m
+[31m-  <component name="JsGulpfileManager">[m
+[31m-    <detection-done>true</detection-done>[m
+[31m-    <sorting>DEFINITION_ORDER</sorting>[m
+[31m-  </component>[m
+[31m-  <component name="ProjectFrameBounds" extendedState="6">[m
+[31m-    <option name="x" value="328" />[m
+[31m-    <option name="y" value="27" />[m
+[31m-    <option name="width" value="1400" />[m
+[31m-    <option name="height" value="1000" />[m
+[31m-  </component>[m
+[31m-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />[m
+[31m-  <component name="ProjectView">[m
+[31m-    <navigator proportions="" version="1">[m
+[31m-      <foldersAlwaysOnTop value="true" />[m
+[31m-    </navigator>[m
+[31m-    <panes>[m
+[31m-      <pane id="ProjectPane">[m
+[31m-        <subPane>[m
+[31m-          <expand>[m
+[31m-            <path>[m
+[31m-              <item name="lambda" type="b2602c69:ProjectViewProjectNode" />[m
+[31m-              <item name="lambda" type="462c0819:PsiDirectoryNode" />[m
+[31m-            </path>[m
+[31m-            <path>[m
+[31m-              <item name="lambda" type="b2602c69:ProjectViewProjectNode" />[m
+[31m-              <item name="lambda" type="462c0819:PsiDirectoryNode" />[m
+[31m-              <item name="app" type="462c0819:PsiDirectoryNode" />[m
+[31m-            </path>[m
+[31m-          </expand>[m
+[31m-          <select />[m
+[31m-        </subPane>[m
+[31m-      </pane>[m
+[31m-      <pane id="Scope" />[m
+[31m-    </panes>[m
+[31m-  </component>[m
+[31m-  <component name="PropertiesComponent">[m
+[31m-    <property name="WebServerToolWindowFactoryState" value="false" />[m
+[31m-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />[m
+[31m-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />[m
+[31m-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />[m
+[31m-  </component>[m
+[31m-  <component name="RunDashboard">[m
+[31m-    <option name="ruleStates">[m
+[31m-      <list>[m
+[31m-        <RuleState>[m
+[31m-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />[m
+[31m-        </RuleState>[m
+[31m-        <RuleState>[m
+[31m-          <option name="name" value="StatusDashboardGroupingRule" />[m
+[31m-        </RuleState>[m
+[31m-      </list>[m
+[31m-    </option>[m
+[31m-  </component>[m
+[31m-  <component name="SvnConfiguration">[m
+[31m-    <configuration />[m
+[31m-  </component>[m
+[31m-  <component name="TaskManager">[m
+[31m-    <task active="true" id="Default" summary="Default task">[m
+[31m-      <changelist id="16f75788-da33-4677-8e73-1c4a3ef08da8" name="Default Changelist" comment="" />[m
+[31m-      <created>1537343839833</created>[m
+[31m-      <option name="number" value="Default" />[m
+[31m-      <option name="presentableId" value="Default" />[m
+[31m-      <updated>1537343839833</updated>[m
+[31m-      <workItem from="1537343840969" duration="106000" />[m
+[31m-      <workItem from="1537343974988" duration="2477000" />[m
+[31m-    </task>[m
+[31m-    <task id="LOCAL-00001" summary="v2">[m
+[31m-      <created>1537346043281</created>[m
+[31m-      <option name="number" value="00001" />[m
+[31m-      <option name="presentableId" value="LOCAL-00001" />[m
+[31m-      <option name="project" value="LOCAL" />[m
+[31m-      <updated>1537346043281</updated>[m
+[31m-    </task>[m
+[31m-    <option name="localTasksCounter" value="2" />[m
+[31m-    <servers />[m
+[31m-  </component>[m
+[31m-  <component name="TimeTrackingManager">[m
+[31m-    <option name="totallyTimeSpent" value="2583000" />[m
+[31m-  </component>[m
+[31m-  <component name="ToolWindowManager">[m
+[31m-    <frame x="0" y="25" width="1920" height="1055" extended-state="6" />[m
+[31m-    <layout>[m
+[31m-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18249734" />[m
+[31m-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />[m
+[31m-      <window_info id="Favorites" order="2" side_tool="true" />[m
+[31m-      <window_info anchor="bottom" id="Messages" weight="0.32972974" />[m
+[31m-      <window_info anchor="bottom" id="Message" order="0" />[m
+[31m-      <window_info anchor="bottom" id="Find" order="1" />[m
+[31m-      <window_info anchor="bottom" id="Run" order="2" />[m
+[31m-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />[m
+[31m-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />[m
+[31m-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />[m
+[31m-      <window_info anchor="bottom" id="TODO" order="6" />[m
+[31m-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />[m
+[31m-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />[m
+[31m-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />[m
+[31m-      <window_info anchor="bottom" id="Terminal" order="10" />[m
+[31m-      <window_info active="true" anchor="bottom" id="Event Log" order="11" side_tool="true" visible="true" weight="0.32864866" />[m
+[31m-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />[m
+[31m-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />[m
+[31m-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />[m
+[31m-      <window_info anchor="right" id="Database" order="3" />[m
+[31m-    </layout>[m
+[31m-  </component>[m
+[31m-  <component name="TypeScriptGeneratedFilesManager">[m
+[31m-    <option name="version" value="1" />[m
+[31m-  </component>[m
+[31m-  <component name="VcsContentAnnotationSettings">[m
+[31m-    <option name="myLimit" value="2678400000" />[m
+[31m-  </component>[m
+[31m-  <component name="VcsManagerConfiguration">[m
+[31m-    <option name="SHOW_DIRTY_RECURSIVELY" value="true" />[m
+[31m-    <ignored-roots>[m
+[31m-      <path value="$PROJECT_DIR$" />[m
+[31m-    </ignored-roots>[m
+[31m-    <MESSAGE value="v2" />[m
+[31m-    <option name="LAST_COMMIT_MESSAGE" value="v2" />[m
+[31m-  </component>[m
+[31m-  <component name="editorHistoryManager">[m
+[31m-    <entry file="file://$PROJECT_DIR$/app/Users.php">[m
+[31m-      <provider selected="true" editor-type-id="text-editor">[m
+[31m-        <state relative-caret-position="85">[m
+[31m-          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />[m
+[31m-        </state>[m
+[31m-      </provider>[m
+[31m-    </entry>[m
+[31m-    <entry file="file://$PROJECT_DIR$/test.php">[m
+[31m-      <provider selected="true" editor-type-id="text-editor">[m
+[31m-        <state relative-caret-position="51">[m
+[31m-          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />[m
+[31m-        </state>[m
+[31m-      </provider>[m
+[31m-    </entry>[m
+[31m-    <entry file="file://$PROJECT_DIR$/index.php">[m
+[31m-      <provider selected="true" editor-type-id="text-editor">[m
+[31m-        <state relative-caret-position="357">[m
+[31m-          <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />[m
+[31m-        </state>[m
+[31m-      </provider>[m
+[31m-    </entry>[m
+[31m-  </component>[m
+[31m-</project>[m
+\ No newline at end of file[m
+[1mdiff --git a/app/Autoload.php b/app/Autoload.php[m
+[1mindex ca27f8e..bc1712f 100755[m
+[1m--- a/app/Autoload.php[m
+[1m+++ b/app/Autoload.php[m
+[36m@@ -1,5 +1,5 @@[m
+ <?php[m
+[31m-session_start();[m
+[32m+[m[32mnamespace lambda;[m
+ [m
+ /**[m
+  * Class Autoloader[m
+[36m@@ -18,12 +18,27 @@[m [mclass Autoloader{[m
+      * @param $class string Le nom de la classe à charger[m
+      */[m
+     static function autoload($class){[m
+[31m-        require 'app/' . $class . '.php';[m
+[32m+[m[32m        if (strpos($class, __NAMESPACE__ . '\\') === 0){[m
+[32m+[m[32m            $class = str_replace(__NAMESPACE__ . '\\', '', $class);[m
+[32m+[m[32m            $class = str_replace('\\', '/', $class);[m
+[32m+[m[32m            require 'app/' . $class . '.php';[m
+[32m+[m[32m        }[m
+     }[m
+ [m
+ }[m
+ [m
+[32m+[m[32mrequire('config/functions.php');[m
+[32m+[m
+ Autoloader::register();[m
+ [m
+[31m-include_once('config/configurations.php');[m
+[31m-include_once('config/functions.php');[m
+[32m+[m[32m//Configuration du site[m
+[32m+[m[32m$Site = new Site([m
+[32m+[m[32m    array([m
+[32m+[m[32m        'siteName' => 'Lambda',[m
+[32m+[m[32m        'siteLink' => 'http://localhost/lambda/',[m
+[32m+[m[32m        'sqlHost' => 'localhost',[m
+[32m+[m[32m        'sqlName' => 'lambda',[m
+[32m+[m[32m        'sqlUser' => 'mxay',[m
+[32m+[m[32m        'sqlPassword' => 'Pass0104%'[m
+[32m+[m[32m    )[m
+[32m+[m[32m);[m
+[1mdiff --git a/app/Database.php b/app/Database.php[m
+[1mindex a1eb450..64130ee 100755[m
+[1m--- a/app/Database.php[m
+[1m+++ b/app/Database.php[m
+[36m@@ -1,20 +1,31 @@[m
+ <?php[m
+[31m-class Database{[m
+[32m+[m[32mnamespace lambda;[m
+[32m+[m[32muse PDO;[m
+[32m+[m
+[32m+[m[32mclass Database extends Site{[m
+     private static $pdo;[m
+ [m
+     private static function getPDO(){[m
+         if(self::$pdo === null){[m
+[31m-            $pdo = new PDO('mysql:host=localhost;dbname=cakephp', 'root', 'pass');[m
+[31m-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);[m
+[31m-            $pdo->exec("SET NAMES 'UTF8'");[m
+[31m-            self::$pdo = $pdo;[m
+[32m+[m[32m            try{[m
+[32m+[m[32m                $pdo = new PDO('mysql:host='.parent::$sqlHost.';dbname='.parent::$sqlName, parent::$sqlUser, parent::$sqlPassword);[m
+[32m+[m[32m                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);[m
+[32m+[m[32m                $pdo->exec("SET NAMES 'UTF8'");[m
+[32m+[m[32m                self::$pdo = $pdo;[m
+[32m+[m[32m            }catch(Exception $e){[m
+[32m+[m[32m                $e->getMessage();[m
+[32m+[m[32m            }[m
+         }[m
+         return self::$pdo;[m
+     }[m
+ [m
+[31m-    public static function query($statement, $data = array(), $return = false, $one = false){[m
+[31m-        $sql = self::getPDO()->prepare($statement);[m
+[31m-        $sql->execute($data);[m
+[32m+[m[32m    public static function query($statement, $return = false, $data = array(), $one = false){[m
+[32m+[m[32m        try{[m
+[32m+[m[32m            $sql = self::getPDO()->prepare($statement);[m
+[32m+[m[32m            $sql->execute($data);[m
+[32m+[m[32m        }catch(Exception $e){[m
+[32m+[m[32m            $e->getMessage();[m
+[32m+[m[32m        }[m
+         [m
+         if($return){[m
+             if($one){[m
+[1mdiff --git a/app/Date.php b/app/Date.php[m
+[1mold mode 100644[m
+[1mnew mode 100755[m
+[1mindex 9a6ef3e..4aacf5d[m
+[1m--- a/app/Date.php[m
+[1m+++ b/app/Date.php[m
+[36m@@ -1,4 +1,6 @@[m
+ <?php[m
+[32m+[m[32mnamespace lambda;[m
+[32m+[m
+ /**[m
+  * Class Date[m
+  */[m
+[1mdiff --git a/app/Form.php b/app/Form.php[m
+[1mold mode 100644[m
+[1mnew mode 100755[m
+[1mindex 704d336..7703db7[m
+[1m--- a/app/Form.php[m
+[1m+++ b/app/Form.php[m
+[36m@@ -1,4 +1,6 @@[m
+ <?php[m
+[32m+[m[32mnamespace lambda;[m
+[32m+[m
+ /**[m
+  * Class Form : Gère les formulaires[m
+  */[m
+[36m@@ -10,19 +12,64 @@[m [mclass Form{[m
+      */[m
+     private $name;[m
+ [m
+[32m+[m[32m    /**[m
+[32m+[m[32m     * @var string $type Type du formulaire[m
+[32m+[m[32m     */[m
+[32m+[m[32m    private $type;[m
+[32m+[m
+     /**[m
+      * @var array $data Données du formulaire[m
+      */[m
+     private $data = array();[m
+ [m
+[32m+[m[32m    /**[m
+[32m+[m[32m     * @var array $data Données de la classe utilisée par le formulaire[m
+[32m+[m[32m     */[m
+[32m+[m[32m    private $class = array([m
+[32m+[m[32m        'name' => '',[m
+[32m+[m[32m        'method' => ''[m
+[32m+[m[32m    );[m
+[32m+[m
+     /**[m
+      * @var string $spacing Saut de ligne HTML[m
+      */[m
+[31m-    private $spacing = "\n";[m
+[32m+[m[32m    private $spacing = "\n \t";[m
+ [m
+     /**[m
+[31m-     * @param string $type : Type du textarea[m
+[31m-     * @param string $name : Nom du textarea[m
+[32m+[m[32m     * @param array $data : Informations du formulaire[m
+[32m+[m[32m     */[m
+[32m+[m[32m    public function form($data = array()){[m
+[32m+[m[32m        $return = '<form method="'.((isset($data['method'])) ? $data['method'] : 'POST').'" action="'.((isset($data['action'])) ? $data['action'] : '').'" '.((isset($data['id'])) ? ' id="'.$data['id'].'"' : '').'>'.$this->spacing;[m
+[32m+[m[32m        echo $return;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    public function endform(){[m
+[32m+[m[32m        $return = '</form>'.$this->spacing;[m
+[32m+[m
+[32m+[m[32m        if($this->type == true){[m
+[32m+[m[32m            $return .= '<script type="text/javascript">'.$this->spacing;[m
+[32m+[m[32m            $return .= "$('form#".$this->class['method']."').on('submit', function (e) {".$this->spacing;[m
+[32m+[m[32m            $return .= 'e.preventDefault();'.$this->spacing;[m
+[32m+[m[32m            $return .= '$.ajax({'.$this->spacing;[m
+[32m+[m[32m            $return .= "type: 'post',".$this->spacing;[m
+[32m+[m
+[32m+[m[32m                    //Ici, on découpe le nom de notre classe pour doubler le "\" dans la chaine[m
+[32m+[m[32m                    //Sinon le champ url d'ajax enlève "\", donc il faut en mettre deux[m
+[32m+[m[32m            $class_name = explode("\\", $this->class['name']);[m
+[32m+[m[32m            $class_name = $class_name[0]."\\\\".$class_name[1];[m
+[32m+[m
+[32m+[m[32m            $return .= "url: 'test.php?class=".$class_name."&method=".$this->class['method'].((!empty($this->data)) ? "&editor=$this->data" : '')."',".$this->spacing;[m
+[32m+[m[32m            $return .= "data: $('form#".$this->class['method']."').serialize(),".$this->spacing;[m
+[32m+[m[32m            $return .= 'success: function (e) { alert(e); }'.$this->spacing;[m
+[32m+[m[32m            $return .= '});'.$this->spacing;[m
+[32m+[m[32m            $return .= '});'.$this->spacing;[m
+[32m+[m[32m            $return .= '</script>'.$this->spacing;[m
+[32m+[m[32m        }[m
+[32m+[m[32m        echo $return;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    /**[m
+[32m+[m[32m     * @param array $data : Informations du textarea[m
+      */[m
+     public function textarea($data = array()){[m
+         $return = '';[m
+[36m@@ -37,8 +84,7 @@[m [mclass Form{[m
+     }[m
+ [m
+     /**[m
+[31m-     * @param string $type : Type de l'input[m
+[31m-     * @param string $name : Nom de l'input[m
+[32m+[m[32m     * @param array $data : Informations de l'input[m
+      */[m
+     public function input($data = array()){[m
+         $return = '';[m
+[36m@@ -53,8 +99,8 @@[m [mclass Form{[m
+     }[m
+ [m
+     /**[m
+[31m-     * @param string $type : Type de l'input[m
+[31m-     * @param string $name : Nom de l'input[m
+[32m+[m[32m     * @param array $data : Informations du select[m
+[32m+[m[32m     * @param array $options : Options du select[m
+      */[m
+     public function select($data = array(), $options = array()){[m
+         $return = '';[m
+[36m@@ -74,33 +120,45 @@[m [mclass Form{[m
+         echo $return;[m
+     }[m
+ [m
+[31m-    /**[m
+[31m-     * @param string $class_name : Nom de la classe à utiliser[m
+[31m-     * @param string $form_name : Nom du formulaire[m
+[31m-     * @param array $name : Données du formulaire[m
+[31m-     */[m
+[31m-    private function send_data($class_name, $form_name, $data = array()){[m
+[31m-        $test = new $class_name(0);[m
+[31m-        $test->$form_name($data);[m
+[32m+[m[32m    private function send_data(){[m
+[32m+[m[32m        $init = new $this->class['name'](0);[m
+[32m+[m
+[32m+[m[32m        //Obligé de nommer $method car sinon il y a une erreur ligne en dessous[m
+[32m+[m[32m        $method = $this->class['method'];[m
+[32m+[m[32m        $init->$method($this->data);[m
+     }[m
+ [m
+     /**[m
+[31m-     * @param string $form_name Nom du formulaire[m
+      * @param string $class_name Nom de la classe à utiliser[m
+[32m+[m[32m     * @param string $class_method Nom de la méthode à utiliser[m
+      * @param array $data Données $_POST et $_FILES du formulaire[m
+[32m+[m[32m     * @param bool $type Via ajax ou post[m
+      */[m
+[31m-    function __construct($class_name, $form_name, $data = array()){[m
+[31m-        $this->name = $form_name;[m
+[31m-[m
+[31m-        //Regarder pour editor / pas editor[m
+[31m-        if(isset($data['admin']) AND $data['admin'] == 'BG'){[m
+[31m-            $validation = true;[m
+[32m+[m[32m    function __construct($class_name, $class_method, $data = array(), $type = false){[m
+[32m+[m[32m        $this->class['name'] = $class_name;[m
+[32m+[m[32m        $this->class['method'] = $class_method;[m
+[32m+[m[32m        $this->type = $type;[m
+[32m+[m
+[32m+[m[32m        //Si c'est un formulaire SANS AJAX on utilise $this⁻>data pour les données du formulaire[m
+[32m+[m[32m        if($type == false){[m
+[32m+[m[32m            //Vérification s'il y a une sécurisation d'éditeur de texte[m
+[32m+[m[32m            if(isset($data['editor'])){[m
+[32m+[m[32m                $validation = true;[m
+[32m+[m[32m            }else{[m
+[32m+[m[32m                $validation = false;[m
+[32m+[m[32m            }[m
+[32m+[m
+[32m+[m[32m            $this->data = Secure_array($data, $validation);[m
+         }else{[m
+[31m-            $validation = false;[m
+[32m+[m[32m            //AJAX[m
+[32m+[m[32m            //On stock dans $this->data les champs du formulaire à sécuriser différement[m
+[32m+[m[32m            $this->data = $data['editor'];[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        //On vérifie qu'un formulaire a bien été envoyé[m
+[32m+[m[32m        if($_SERVER['REQUEST_METHOD'] == "POST"){[m
+[32m+[m[32m            $this->send_data();[m
+         }[m
+[31m-        $this->data = Secure_array($data, $validation);[m
+[31m-        [m
+[31m-        $this->send_data($class_name, $form_name, $this->data);[m
+     }[m
+ [m
+ }[m
+[1mdiff --git a/app/config/configurations.php b/app/config/configurations.php[m
+[1mdeleted file mode 100755[m
+[1mindex 95fd381..0000000[m
+[1m--- a/app/config/configurations.php[m
+[1m+++ /dev/null[m
+[36m@@ -1,4 +0,0 @@[m
+[31m-<?php[m
+[31m-	// Site[m
+[31m-	$SiteName = "sitename";[m
+[31m-	$SiteLink = "http://localhost/lambda/";[m
+[1mdiff --git a/app/config/functions.php b/app/config/functions.php[m
+[1mindex 847fbee..14a6e85 100755[m
+[1m--- a/app/config/functions.php[m
+[1m+++ b/app/config/functions.php[m
+[36m@@ -26,7 +26,7 @@[m [mfunction generate_password($size)[m
+ [m
+ function Secure($string, $mode = false) {[m
+     if($mode=="editor") {[m
+[31m-        return str_replace(array("<script>", "</script>"), array("&lt;script&gt;", "&lt;/script&gt;"), addslashes(trim($string)));[m
+[32m+[m[32m        return str_replace(array("<script>", "</script>"), array("&lt;script&gt;", "&lt;/script&gt;"), trim($string));[m
+     } else {[m
+         return htmlspecialchars(htmlspecialchars_decode(trim($string), ENT_QUOTES), ENT_QUOTES);[m
+     }[m
+[36m@@ -38,10 +38,17 @@[m [mfunction Secure_array($array, $mode = false){[m
+ [m
+     foreach($array as $key => $value){[m
+ [m
+[31m-        if($mode == false){[m
+[31m-            $value = Secure($value);[m
+[32m+[m[32m        //Si le mode editeur de texte est activé[m
+[32m+[m[32m        if($mode == true){[m
+[32m+[m[32m            //On recherche dans array['editor'] s'il y a un champ à sécuriser différement[m
+[32m+[m[32m            //Sinon on sécurise comme d'habitude[m
+[32m+[m[32m            if(in_array($key, explode(",", $array['editor']))){[m
+[32m+[m[32m                $value = Secure($value, 'editor');[m
+[32m+[m[32m            }else{[m
+[32m+[m[32m                $value = Secure($value);[m
+[32m+[m[32m            }[m
+         }else{[m
+[31m-            $value = Secure($value, 'editor');[m
+[32m+[m[32m            $value = Secure($value);[m
+         }[m
+ [m
+         $array_new[$key] = $value;[m
+[1mdiff --git a/index.php b/index.php[m
+[1mindex fb74d91..9c7049c 100755[m
+[1m--- a/index.php[m
+[1m+++ b/index.php[m
+[36m@@ -1,4 +1,10 @@[m
+[31m-<?php require('app/Autoload.php'); ?>[m
+[32m+[m[32m<?php[m[41m [m
+[32m+[m[32muse lambda\Form;[m
+[32m+[m[32muse lambda\Date;[m
+[32m+[m[32muse lambda\Error;[m
+[32m+[m
+[32m+[m[32mrequire('app/Autoload.php');[m[41m [m
+[32m+[m[32m?>[m
+ <!DOCTYPE html>[m
+ <html lang="fr">[m
+     <head>[m
+[36m@@ -11,16 +17,61 @@[m
+         <link rel="stylesheet" href="assets/css/styles.css">[m
+         <link rel="stylesheet" href="assets/css/responsive.css">[m
+         <link rel="stylesheet" href="assets/css/mystrap.css">[m
+[32m+[m
+[32m+[m[32m        <!-- JS -->[m
+[32m+[m[32m        <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>[m
+     </head>[m
+     <body>[m
+[32m+[m[32m        <!-- <?php[m
+[32m+[m[32m        try{[m
+[32m+[m[32m            $pdo = new PDO('mysql:host=dedeed;dbname=dedeed', 'frfrrf', 'frrfrf');[m
+[32m+[m[32m            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);[m
+[32m+[m[32m            $pdo->exec("SET NAMES 'UTF8'");[m
+[32m+[m[32m        }catch(Exception $e){[m
+[32m+[m[32m            $error = new Error($e);[m
+[32m+[m[32m            $error->getError();[m
+[32m+[m[32m            // echo $e->getCode().'<br>';[m
+[32m+[m[32m            // echo $e->getLine().'<br>';[m
+[32m+[m[32m            // echo $e->getMessage().'<br>';[m
+[32m+[m[32m            // echo $e->getFile().'<br>';[m
+[32m+[m[32m            // echo $e->getPrevious().'<br>';[m
+[32m+[m[32m        }[m
+[32m+[m[32m        ?> -->[m
+         <?php [m
+[31m-            // $Auj = new Date();[m
+[32m+[m[32m            //Méthode sans ajax[m
+[32m+[m[32m            //$login = new Form('lambda\Users', 'login', array_merge($_POST, array('editor' => 'username,password')));[m
+[32m+[m[32m            //Méthode avec ajax[m
+[32m+[m[32m            $login = new Form('lambda\Users', 'login', array(), true);[m[41m [m
+[32m+[m[32m        ?>[m
+[32m+[m[32m        <p>Connaitre l'ID de la personne via son nom d'utilisateur</p>[m
+[32m+[m[32m        <?php[m[41m  [m
+[32m+[m[32m            $login->form(array('method' => 'post', 'id' => 'login'));[m
+[32m+[m
+[32m+[m[32m            $login->input([m
+[32m+[m[32m                array([m
+[32m+[m[32m                'label' => 'Nom d\'utilisateur',[m
+[32m+[m[32m                'name' => 'username',[m
+[32m+[m[32m                'type' => 'text'[m
+[32m+[m[32m                )[m
+[32m+[m[32m            );[m
+ [m
+[31m-            // echo $Auj->number(5848494, '/');[m
+[32m+[m[32m            $login->input([m
+[32m+[m[32m                array([m
+[32m+[m[32m                    'type' => 'submit',[m
+[32m+[m[32m                    'name' => 'login',[m
+[32m+[m[32m                    'value' => 'Valider'[m
+[32m+[m[32m                )[m
+[32m+[m[32m            );[m
+[32m+[m
+[32m+[m[32m            $login->endform();[m
+[32m+[m[32m        ?>[m
+[32m+[m[32m        <!-- VOIR COMMENT RECUPERER LES VALEURS VIA AJAX METHODE LA PLUS SIMPLE -->[m
+[32m+[m[32m        <?php[m[41m [m
+[32m+[m[32m            //Date[m
+[32m+[m[32m            $date_now = '1538665976';[m
+[32m+[m[32m            echo $date_now.'<br>';[m
+ [m
+[31m-            // echo $Auj->full(1114448444);[m
+[31m-            echo 'Il y a ';[m
+[31m-            echo Date::before(1536759000);[m
+[32m+[m[32m            Date::before($date_now).'<br>';[m
+         ?>[m
+     </body>[m
+ </html>[m
+[1mdiff --git a/templates/footer.php b/templates/footer.php[m
+[1mdeleted file mode 100755[m
+[1mindex e69de29..0000000[m
+[1mdiff --git a/templates/header.php b/templates/header.php[m
+[1mdeleted file mode 100755[m
+[1mindex e69de29..0000000[m

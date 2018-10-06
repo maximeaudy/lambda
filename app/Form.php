@@ -1,4 +1,6 @@
 <?php
+namespace lambda;
+
 /**
  * Class Form : Gère les formulaires
  */
@@ -11,18 +13,63 @@ class Form{
     private $name;
 
     /**
+     * @var string $type Type du formulaire
+     */
+    private $type;
+
+    /**
      * @var array $data Données du formulaire
      */
     private $data = array();
 
     /**
-     * @var string $spacing Saut de ligne HTML
+     * @var array $data Données de la classe utilisée par le formulaire
      */
-    private $spacing = "\n";
+    private $class = array(
+        'name' => '',
+        'method' => ''
+    );
 
     /**
-     * @param string $type : Type du textarea
-     * @param string $name : Nom du textarea
+     * @var string $spacing Saut de ligne HTML
+     */
+    private $spacing = "\n \t";
+
+    /**
+     * @param array $data : Informations du formulaire
+     */
+    public function form($data = array()){
+        $return = '<form method="'.((isset($data['method'])) ? $data['method'] : 'POST').'" action="'.((isset($data['action'])) ? $data['action'] : '').'" '.((isset($data['id'])) ? ' id="'.$data['id'].'"' : '').'>'.$this->spacing;
+        echo $return;
+    }
+
+    public function endform(){
+        $return = '</form>'.$this->spacing;
+
+        if($this->type == true){
+            $return .= '<script type="text/javascript">'.$this->spacing;
+            $return .= "$('form#".$this->class['method']."').on('submit', function (e) {".$this->spacing;
+            $return .= 'e.preventDefault();'.$this->spacing;
+            $return .= '$.ajax({'.$this->spacing;
+            $return .= "type: 'post',".$this->spacing;
+
+                    //Ici, on découpe le nom de notre classe pour doubler le "\" dans la chaine
+                    //Sinon le champ url d'ajax enlève "\", donc il faut en mettre deux
+            $class_name = explode("\\", $this->class['name']);
+            $class_name = $class_name[0]."\\\\".$class_name[1];
+
+            $return .= "url: 'test.php?class=".$class_name."&method=".$this->class['method'].((!empty($this->data)) ? "&editor=$this->data" : '')."',".$this->spacing;
+            $return .= "data: $('form#".$this->class['method']."').serialize(),".$this->spacing;
+            $return .= 'success: function (e) { alert(e); }'.$this->spacing;
+            $return .= '});'.$this->spacing;
+            $return .= '});'.$this->spacing;
+            $return .= '</script>'.$this->spacing;
+        }
+        echo $return;
+    }
+
+    /**
+     * @param array $data : Informations du textarea
      */
     public function textarea($data = array()){
         $return = '';
@@ -37,8 +84,7 @@ class Form{
     }
 
     /**
-     * @param string $type : Type de l'input
-     * @param string $name : Nom de l'input
+     * @param array $data : Informations de l'input
      */
     public function input($data = array()){
         $return = '';
@@ -53,8 +99,8 @@ class Form{
     }
 
     /**
-     * @param string $type : Type de l'input
-     * @param string $name : Nom de l'input
+     * @param array $data : Informations du select
+     * @param array $options : Options du select
      */
     public function select($data = array(), $options = array()){
         $return = '';
@@ -74,33 +120,45 @@ class Form{
         echo $return;
     }
 
-    /**
-     * @param string $class_name : Nom de la classe à utiliser
-     * @param string $form_name : Nom du formulaire
-     * @param array $name : Données du formulaire
-     */
-    private function send_data($class_name, $form_name, $data = array()){
-        $test = new $class_name(0);
-        $test->$form_name($data);
+    private function send_data(){
+        $init = new $this->class['name'](0);
+
+        //Obligé de nommer $method car sinon il y a une erreur ligne en dessous
+        $method = $this->class['method'];
+        $init->$method($this->data);
     }
 
     /**
-     * @param string $form_name Nom du formulaire
      * @param string $class_name Nom de la classe à utiliser
+     * @param string $class_method Nom de la méthode à utiliser
      * @param array $data Données $_POST et $_FILES du formulaire
+     * @param bool $type Via ajax ou post
      */
-    function __construct($class_name, $form_name, $data = array()){
-        $this->name = $form_name;
+    function __construct($class_name, $class_method, $data = array(), $type = false){
+        $this->class['name'] = $class_name;
+        $this->class['method'] = $class_method;
+        $this->type = $type;
 
-        //Regarder pour editor / pas editor
-        if(isset($data['admin']) AND $data['admin'] == 'BG'){
-            $validation = true;
+        //Si c'est un formulaire SANS AJAX on utilise $this⁻>data pour les données du formulaire
+        if($type == false){
+            //Vérification s'il y a une sécurisation d'éditeur de texte
+            if(isset($data['editor'])){
+                $validation = true;
+            }else{
+                $validation = false;
+            }
+
+            $this->data = Secure_array($data, $validation);
         }else{
-            $validation = false;
+            //AJAX
+            //On stock dans $this->data les champs du formulaire à sécuriser différement
+            $this->data = $data['editor'];
         }
-        $this->data = Secure_array($data, $validation);
-        
-        $this->send_data($class_name, $form_name, $this->data);
+
+        //On vérifie qu'un formulaire a bien été envoyé
+        if($_SERVER['REQUEST_METHOD'] == "POST"){
+            $this->send_data();
+        }
     }
 
 }

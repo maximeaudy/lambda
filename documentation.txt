@@ -1,0 +1,31 @@
+#######################################
+#									  #
+#	Documentation LMD Framework 1.0   #	
+#	© 2018 Make self web development  # 
+#									  #
+#######################################
+
+/app : Dossier contenant les classes PHP
+/assets : Dossier contenant les librairies
+/templates : Dossier contenant les templates HTML
+
+Formulaires
+
+$login = new Form('lambda\Users', 'login', array_merge($_POST, array('editor' => 'username,password'))); 
+
+1. On initialise un nouveau formulaire
+2. Paramètres 
+	1 : classe à utiliser
+	2 : méthode de la classe à utiliser
+	3 : fusion de deux array() des données $_POST & editor avec les champs à sécuriser différement
+3. Une fois le formulaire envoyé avec la méthode $_POST on envoie les données à la classe utilisé avec les données
+
+$login->input(
+    array(
+    'label' => 'Nom d\'utilisateur',
+    'name' => 'username',
+    'type' => 'text'
+    )
+);
+
+1. Nouveau champ HTML

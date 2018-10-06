@@ -26,7 +26,7 @@ function generate_password($size)
 
 function Secure($string, $mode = false) {
     if($mode=="editor") {
-        return str_replace(array("<script>", "</script>"), array("&lt;script&gt;", "&lt;/script&gt;"), addslashes(trim($string)));
+        return str_replace(array("<script>", "</script>"), array("&lt;script&gt;", "&lt;/script&gt;"), trim($string));
     } else {
         return htmlspecialchars(htmlspecialchars_decode(trim($string), ENT_QUOTES), ENT_QUOTES);
     }
@@ -38,10 +38,17 @@ function Secure_array($array, $mode = false){
 
     foreach($array as $key => $value){
 
-        if($mode == false){
-            $value = Secure($value);
+        //Si le mode editeur de texte est activé
+        if($mode == true){
+            //On recherche dans array['editor'] s'il y a un champ à sécuriser différement
+            //Sinon on sécurise comme d'habitude
+            if(in_array($key, explode(",", $array['editor']))){
+                $value = Secure($value, 'editor');
+            }else{
+                $value = Secure($value);
+            }
         }else{
-            $value = Secure($value, 'editor');
+            $value = Secure($value);
         }
 
         $array_new[$key] = $value;
