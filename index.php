@@ -1,7 +1,6 @@
 <?php 
 use lambda\Form;
 use lambda\Date;
-use lambda\Error;
 
 require('app/Autoload.php'); 
 ?>
@@ -9,7 +8,7 @@ require('app/Autoload.php');
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title><?= $SiteName; ?></title>
+        <title><?= $Site->siteName; ?></title>
         <meta name="author" content="">
         <meta name="keywords" content="">
         <meta name="description" content="">
@@ -22,22 +21,7 @@ require('app/Autoload.php');
         <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
     </head>
     <body>
-        <!-- <?php
-        try{
-            $pdo = new PDO('mysql:host=dedeed;dbname=dedeed', 'frfrrf', 'frrfrf');
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-            $pdo->exec("SET NAMES 'UTF8'");
-        }catch(Exception $e){
-            $error = new Error($e);
-            $error->getError();
-            // echo $e->getCode().'<br>';
-            // echo $e->getLine().'<br>';
-            // echo $e->getMessage().'<br>';
-            // echo $e->getFile().'<br>';
-            // echo $e->getPrevious().'<br>';
-        }
-        ?> -->
-        <?php 
+        <?php
             //Méthode sans ajax
             //$login = new Form('lambda\Users', 'login', array_merge($_POST, array('editor' => 'username,password')));
             //Méthode avec ajax

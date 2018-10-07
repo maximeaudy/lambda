@@ -23,7 +23,7 @@ class Date{
 		$day = date('D', $timestamp);
 		$month = date('m', $timestamp);
 		$date = Date::$days[strtolower($day)].' '.date('d', $timestamp).' '.Date::$months[$month].' '.date('Y', $timestamp);
-		echo $date;
+		return $date;
 	}
 
 	/**
@@ -32,7 +32,7 @@ class Date{
 	public static function min($timestamp){
 		$month = date('m', $timestamp);
 		$date = date('d', $timestamp).' '.Date::$months[$month].' '.date('Y', $timestamp);
-		echo $date;
+		return $date;
 	}
 
 	/**
@@ -40,7 +40,7 @@ class Date{
      * @param string $spacing : Le caractère d'espacement pour la date (ex: / ou -)
      */
 	public static function number($timestamp, $spacing){
-		echo date('d'.$spacing.'m'.$spacing.'Y', $timestamp);
+		return date('d'.$spacing.'m'.$spacing.'Y', $timestamp);
 	}
 
 	/**
@@ -65,6 +65,6 @@ class Date{
 			$return = Date::min($timestamp);
 		}
 
-		echo $return;
+		return $return;
 	}
 }

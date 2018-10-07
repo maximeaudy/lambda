@@ -1,8 +1,17 @@
 <?php
 namespace lambda;
 use PDO;
+use Exception;
 
+/**
+ * Class Database
+ * Permet de gérer les requêtes avec la base de donnée
+ * @package lambda
+ */
 class Database extends Site{
+    /**
+     * @var object Instance PDO
+     */
     private static $pdo;
 
     private static function getPDO(){
@@ -19,6 +28,13 @@ class Database extends Site{
         return self::$pdo;
     }
 
+    /**
+     * @param $statement : Requête SQL
+     * @param bool $return : Retourne le résultat
+     * @param array $data : Données de la requête SQL
+     * @param bool $one : Retourne fetch ou fetchall
+     * @return array|mixed
+     */
     public static function query($statement, $return = false, $data = array(), $one = false){
         try{
             $sql = self::getPDO()->prepare($statement);

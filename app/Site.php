@@ -2,8 +2,8 @@
 namespace lambda;
 
 class Site{
-	private $siteName;
-	private $siteLink;
+	public $siteName;
+	public $siteLink;
 
 	protected static $sqlHost;
 	protected static $sqlName;
@@ -12,8 +12,8 @@ class Site{
 
 	public function __construct($data){
 		//Paramètres du site
-		$this->$siteName = $data['siteName'];
-		$this->$siteLink = $data['siteLink'];
+		$this->siteName = $data['siteName'];
+		$this->siteLink = $data['siteLink'];
 
 		//Base de donnée
 		self::$sqlHost = $data['sqlHost'];
