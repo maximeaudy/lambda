@@ -29,3 +29,19 @@ $login->input(
 );
 
 1. Nouveau champ HTML
+
+
+
+Messages
+
+return new Message('error', 'koala perché',2);
+
+1. On return la classe Message qui renvoie un echo
+2. Paramètres
+    1 : error, success, warning
+    2 : message
+    3 : méthode de l'alerte (div, js, alert...)
+
+$login->endform('messageDiv');
+3. On renvoie le type d'affichage que l'on souhaite
+    -> c'est configuré dans la méthodes Form->endform() (Form.php)

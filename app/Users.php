@@ -14,7 +14,7 @@ class Users{
 		$sql = Database::query('SELECT * FROM users WHERE name = ?', TRUE, array($post['username']), TRUE);
 		if(!empty($sql)){
 			echo $sql['id'];
-		}else echo "erreur";
+		}else return new Message('error', 'koala perché',2);
 	}
 
 	public function test()

@@ -19,6 +19,7 @@ require('app/Autoload.php');
 
         <!-- JS -->
         <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="assets/js/Message.js"></script>
     </head>
     <body>
         <?php
@@ -28,7 +29,7 @@ require('app/Autoload.php');
             $login = new Form('lambda\Users', 'login', array(), true); 
         ?>
         <p>Connaitre l'ID de la personne via son nom d'utilisateur</p>
-        <div id="message"></div>
+        <div id="messageDiv"></div>
         <?php  
             $login->form(array('method' => 'post', 'id' => 'login'));
 
@@ -48,7 +49,7 @@ require('app/Autoload.php');
                 )
             );
 
-            $login->endform('message');
+            $login->endform('messageDiv');
         ?>
 
         <script>
