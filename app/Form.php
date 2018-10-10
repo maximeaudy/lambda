@@ -33,7 +33,7 @@ class Form{
     /**
      * @var string $spacing Saut de ligne HTML
      */
-    private $spacing = "\n \t";
+    private $spacing = "\n \t \t";
 
     /**
      * @param array $data : Informations du formulaire
@@ -43,7 +43,10 @@ class Form{
         echo $return;
     }
 
-    public function endform(){
+    /**
+     * @param string $return Ce que retourne ajax
+     */
+    public function endform($returnValue = 'none'){
         $return = '</form>'.$this->spacing;
 
         if($this->type == true){
@@ -53,14 +56,18 @@ class Form{
             $return .= '$.ajax({'.$this->spacing;
             $return .= "type: 'post',".$this->spacing;
 
-                    //Ici, on découpe le nom de notre classe pour doubler le "\" dans la chaine
-                    //Sinon le champ url d'ajax enlève "\", donc il faut en mettre deux
+            //Ici, on découpe le nom de notre classe pour doubler le "\" dans la chaine
+            //Sinon le champ url d'ajax enlève "\", donc il faut en mettre deux
             $class_name = explode("\\", $this->class['name']);
             $class_name = $class_name[0]."\\\\".$class_name[1];
 
             $return .= "url: 'test.php?class=".$class_name."&method=".$this->class['method'].((!empty($this->data)) ? "&editor=$this->data" : '')."',".$this->spacing;
             $return .= "data: $('form#".$this->class['method']."').serialize(),".$this->spacing;
-            $return .= 'success: function (e) { alert(e); }'.$this->spacing;
+            //On choisit ce qu'on retourne avec ajax
+            //if($returnValue == "message")
+              //  $return .= 'success: function (e) { alert("'.$returnValue.'"); }'.$this->spacing;
+            if($returnValue != "none")
+                $return .= 'success: function (e) { $("#'.$returnValue.'").text(e); }'.$this->spacing;
             $return .= '});'.$this->spacing;
             $return .= '});'.$this->spacing;
             $return .= '</script>'.$this->spacing;
