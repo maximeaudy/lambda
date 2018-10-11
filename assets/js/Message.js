@@ -11,6 +11,7 @@ class Message
 
     showMessage()
     {
-      console.log(this.message);
+        return alertbox.show(this.type, this.message);
     }
+
 }

@@ -14,6 +14,7 @@ require('app/Autoload.php');
         <meta name="description" content="">
         <!-- CSS -->
         <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/alert.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <link rel="stylesheet" href="assets/css/mystrap.css">
 
@@ -45,13 +46,13 @@ require('app/Autoload.php');
                 array(
                     'type' => 'submit',
                     'name' => 'login',
-                    'value' => 'Valider'
+                    'value' => 'Valider',
+                    'id' => 'showGo'
                 )
             );
 
-            $login->endform('messageDiv');
+            $login->endform('messageAlert');
         ?>
-
         <script>
             var arr = [ "one", "two", "three", "four", "five" ];
             var obj = { one: 1, two: 2, three: 3, four: 4, five: 5 };
@@ -67,14 +68,24 @@ require('app/Autoload.php');
                 $( "#" + i ).append( document.createTextNode( " - " + val ) );
             });
         </script>
-
-        <!-- VOIR COMMENT RECUPERER LES VALEURS VIA AJAX METHODE LA PLUS SIMPLE -->
-        <?php 
+        <div id="alert-area" class="alert-area"></div>
+        <?php
             //Date
             $date_now = '1538665976';
             echo $date_now.'<br>';
 
             echo Date::before($date_now).'<br>';
         ?>
+        <script type="text/javascript" src="assets/js/alert.js"></script>
+        <script>
+            var alertbox = new AlertBox({
+                closeTime: 5000,
+                persistent: false,
+                hideCloseButton: true
+            });
+            //$("#showGo").on('click', function () {
+            //    alertbox.show('Hello! This is a message.');
+            //});
+        </script>
     </body>
 </html>

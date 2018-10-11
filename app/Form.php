@@ -69,7 +69,7 @@ class Form{
             if($returnValue == "messageDiv")
                 $return .= 'success: function (e) { $("#'.$returnValue.'").text(e); }'.$this->spacing;
             elseif($returnValue == "messageAlert")
-                $return .= 'success: function (e) { e = JSON.parse(e); new Message(e[0], e[1], e[2]); }'.$this->spacing;
+                $return .= 'success: function (e) { e = $.parseJSON(e); new Message(e[0], e[1], e[2]); }'.$this->spacing;
             $return .= '});'.$this->spacing;
             $return .= '});'.$this->spacing;
             $return .= '</script>'.$this->spacing;
