@@ -33,7 +33,7 @@ class Message
 
     private function getMessage()
     {
-        if($type === 1)
+        if($this->method == 1)
             echo json_encode(array($this->type, $this->message, $this->method));
         else
             echo $this->message;
