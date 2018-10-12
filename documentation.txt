@@ -5,43 +5,82 @@
 #									  #
 #######################################
 
+_________________________________________________
+
+ Arborescence des fichiers :
+
 /app : Dossier contenant les classes PHP
 /assets : Dossier contenant les librairies
 /templates : Dossier contenant les templates HTML
+_________________________________________________
 
-Formulaires
+#################################################
+_________________________________________________
 
-$login = new Form('lambda\Users', 'login', array_merge($_POST, array('editor' => 'username,password'))); 
+Gérer les formulaires
+Étapes d'exécution : Page HTML > Form.php > Class.php > Méthode de cette Class.php
 
-1. On initialise un nouveau formulaire
-2. Paramètres 
-	1 : classe à utiliser
-	2 : méthode de la classe à utiliser
-	3 : fusion de deux array() des données $_POST & editor avec les champs à sécuriser différement
-3. Une fois le formulaire envoyé avec la méthode $_POST on envoie les données à la classe utilisé avec les données
+1 : Page HTML
+_____________
+
+$login = new Form('lambda\Users', 'login', array_merge($_POST, array('editor' => 'username,password')), FALSE);
+#0 = new Form(#1, #2, array_merge(#3), #4);
+
+#0 = Nom du formulaire
+#1 = Classe à utiliser pour définir Class.php
+#2 = Méthode à utiliser de la classe
+#3 = Tableau PHP contenant toutes les données à transmettre au formulaire
+
+    array_merge(#4, #5, #6)
+    #5 = Données $_POST
+    #6 = Données $_FILES
+    #7 = Éléments du formulaire à sécuriser différement
+
+        array('editor' => '#8,#8')
+        #8 = nom des éléments HTML (séparés par une virgule)
+
+#4 = Type du formulaire Ajax ou Post
+    Ajax = TRUE
+    POST = FALSE (par défault)
+______________________________
+
+Exemple de création d'un input
 
 $login->input(
     array(
     'label' => 'Nom d\'utilisateur',
     'name' => 'username',
+    'required' => TRUE,
+    'class' => 'class-form',
     'type' => 'text'
     )
 );
+_______________________________________________________________________________
 
-1. Nouveau champ HTML
+###############################################################################
+_______________________________________________________________________________
+
+Gérer les alertes et messages lors des envoies de formulaires
+Étapes d'exécution : Class.php > Message.php > Form.php > Message.js > alert.js
+
+1 : Class.php
+_____________
+
+return new Message(#1, #2, #3);
+#1 = Type (error, warning, success)
+#2 = Message
+#3 = Méthode (alerte JS persistente, non-persistente, sans JS dans une div...)
+_______________________________________
+
+2 : Message.php > Form.php > Message.js
+
+On retourne le message en fonction de la méthode utilisé #3
+____________
+
+3 : alert.js
+
+Design et fonctionnement d'une alerte
+_______________________________________________________________________________
 
 
 
-Messages
-
-return new Message('error', 'koala perché',2);
-
-1. On return la classe Message qui renvoie un echo
-2. Paramètres
-    1 : error, success, warning
-    2 : message
-    3 : méthode de l'alerte (div, js, alert...)
-
-$login->endform('messageDiv');
-3. On renvoie le type d'affichage que l'on souhaite
-    -> c'est configuré dans la méthodes Form->endform() (Form.php)
