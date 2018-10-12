@@ -14,13 +14,13 @@ require('app/Autoload.php');
         <meta name="description" content="">
         <!-- CSS -->
         <link rel="stylesheet" href="assets/css/styles.css">
-        <link rel="stylesheet" href="assets/css/alert.css">
+        <link rel="stylesheet" href="assets/css/alert.css?<?= time(); ?>">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <link rel="stylesheet" href="assets/css/mystrap.css">
 
         <!-- JS -->
         <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="assets/js/Message.js"></script>
+        <script type="text/javascript" src="assets/js/Message.js?<?= time(); ?>"></script>
     </head>
     <body>
         <?php
@@ -76,16 +76,6 @@ require('app/Autoload.php');
 
             echo Date::before($date_now).'<br>';
         ?>
-        <script type="text/javascript" src="assets/js/alert.js"></script>
-        <script>
-            var alertbox = new AlertBox({
-                closeTime: 5000,
-                persistent: false,
-                hideCloseButton: true
-            });
-            //$("#showGo").on('click', function () {
-            //    alertbox.show('Hello! This is a message.');
-            //});
-        </script>
+        <script type="text/javascript" src="assets/js/alert.js?<?= time(); ?>"></script>
     </body>
 </html>

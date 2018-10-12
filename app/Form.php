@@ -66,10 +66,10 @@ class Form{
             //On choisit ce qu'on retourne avec ajax
             //if($returnValue == "message")
               //  $return .= 'success: function (e) { alert("'.$returnValue.'"); }'.$this->spacing;
-            if($returnValue == "messageDiv")
-                $return .= 'success: function (e) { $("#'.$returnValue.'").text(e); }'.$this->spacing;
-            elseif($returnValue == "messageAlert")
+            if($returnValue == "messageAlert")
                 $return .= 'success: function (e) { e = $.parseJSON(e); new Message(e[0], e[1], e[2]); }'.$this->spacing;
+            else
+                $return .= 'success: function (e) { $("#'.$returnValue.'").text(e); }'.$this->spacing;
             $return .= '});'.$this->spacing;
             $return .= '});'.$this->spacing;
             $return .= '</script>'.$this->spacing;

@@ -42,7 +42,7 @@ var alertboxPersistent = new AlertBox({
     persistent: true,
     hideCloseButton: false
 });
-var alertNoClose = new AlertBox({
+var alertbox = new AlertBox({
     closeTime: 5000,
     persistent: false,
     hideCloseButton: true
