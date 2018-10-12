@@ -11,7 +11,7 @@
     opacity: 0;
 }
 
-.alert.close {
+.alert a.close {
     background: transparent;
     width: 12px;
     height: 12px;
@@ -20,8 +20,8 @@
     right: 15px;
 }
 
-.alert.close:before,
-.alert.close:after {
+.alert a.close:before,
+.alert a.close:after {
     content: '';
     width: 15px;
     border-top: solid 2px white;
@@ -31,16 +31,16 @@
     display: block;
 }
 
-.alert.close:before {
+.alert a.close:before {
     transform: rotate(45deg);
 }
 
-.alert.close:after {
+.alert a.close:after {
     transform: rotate(135deg);
 }
 
-.alert.close:hover:before,
-.alert.close:hover:after {
+.alert a.close:hover:before,
+.alert a.close:hover:after {
     border-top: solid 2px #d8d8d8;
 }
 
