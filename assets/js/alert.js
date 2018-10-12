@@ -1,6 +1,7 @@
 var AlertBox = function(option) {
     this.show = function(type, msg) {
-        var alertArea = document.querySelector('#alert-area');
+        $("body").append('<div id="alert-area" class="alert-area"></div>');
+        var areabox = document.querySelector('#alert-area');
         var alertBox = document.createElement('DIV');
         var alertContent = document.createElement('DIV');
         var alertClose = document.createElement('A');
@@ -15,7 +16,7 @@ var AlertBox = function(option) {
         if (!option.hideCloseButton || typeof option.hideCloseButton === 'undefined') {
             alertBox.appendChild(alertClose);
         }
-        alertArea.appendChild(alertBox);
+        areabox.appendChild(alertBox);
         alertClose.addEventListener('click', function(event) {
             event.preventDefault();
             alertClass.hide(alertBox);

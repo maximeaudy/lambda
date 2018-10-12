@@ -20,6 +20,7 @@ require('app/Autoload.php');
 
         <!-- JS -->
         <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="assets/js/alert.js?<?= time(); ?>"></script>
         <script type="text/javascript" src="assets/js/Message.js?<?= time(); ?>"></script>
     </head>
     <body>
@@ -46,29 +47,12 @@ require('app/Autoload.php');
                 array(
                     'type' => 'submit',
                     'name' => 'login',
-                    'value' => 'Valider',
-                    'id' => 'showGo'
+                    'value' => 'Valider'
                 )
             );
 
             $login->endform('messageAlert');
         ?>
-        <script>
-            var arr = [ "one", "two", "three", "four", "five" ];
-            var obj = { one: 1, two: 2, three: 3, four: 4, five: 5 };
-
-            jQuery.each( arr, function( i, val ) {
-                $( "#" + val ).text( "Mine is " + val + "." );
-
-                // Will stop running after "three"
-                return ( val !== "three" );
-            });
-
-            jQuery.each( obj, function( i, val ) {
-                $( "#" + i ).append( document.createTextNode( " - " + val ) );
-            });
-        </script>
-        <div id="alert-area" class="alert-area"></div>
         <?php
             //Date
             $date_now = '1538665976';
@@ -76,6 +60,5 @@ require('app/Autoload.php');
 
             echo Date::before($date_now).'<br>';
         ?>
-        <script type="text/javascript" src="assets/js/alert.js?<?= time(); ?>"></script>
     </body>
 </html>
