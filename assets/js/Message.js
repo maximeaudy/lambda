@@ -11,9 +11,9 @@ class Message
 
     showMessage()
     {
-        if(this.method === 1)
+        if(this.method === 10)
             return alertbox.show(this.type, this.message);
-        else
+        else if(this.method === 11)
             return alertboxPersistent.show(this.type, this.message);
     }
 

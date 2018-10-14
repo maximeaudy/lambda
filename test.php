@@ -2,18 +2,17 @@
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 $class = $_GET['class'];
 $method = $_GET['method'];
-$data = $_GET['editor'];
+$data = $_POST;
 
 require('app/Autoload.php');
+
 	if(isset($class) AND isset($method)){
 
 		//Vérification s'il y a une sécurisation d'éditeur de texte
-	    if(!empty($data)){
+	    if(isset($data['editor'])){
 	        $validation = true;
-	        $data = array_merge($_POST, array('editor' => $data));
 	    }else{
 	        $validation = false;
-	        $data = $_POST;
 	    }
 
 	    $data = Secure_array($data, $validation);

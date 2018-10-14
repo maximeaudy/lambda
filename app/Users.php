@@ -13,12 +13,17 @@ class Users{
 	{
 		$sql = Database::query('SELECT * FROM users WHERE name = ?', TRUE, array($post['username']), TRUE);
 		if(!empty($sql)){
-		    return new Message('success', 'Utilisateur trouvé avec l\'ID : '.$sql['id'],2);
-		}else return new Message('error', 'Utilisateur introuvable',2);
+		    return new Message('success', 'Utilisateur trouvé avec l\'ID : '.$sql['id'],10);
+		}else return new Message('error', 'Utilisateur introuvable',10);
 	}
 
-	public function test()
+	public function test($post)
 	{
-		echo 'eeee';
+        $sql = Database::query('SELECT * FROM users WHERE name = ?', TRUE, array($post['username']), FALSE);
+        if(!empty($sql))
+        {
+            return new Message('success', 'Utilisateur trouvé',20);
+        }
+        else return new Message('error', 'Utilisateur introuvable2',20);
 	}
 }

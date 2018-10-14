@@ -39,7 +39,7 @@ class Form{
      * @param array $data : Informations du formulaire
      */
     public function form($data = array()){
-        $return = '<form method="'.((isset($data['method'])) ? $data['method'] : 'POST').'" action="'.((isset($data['action'])) ? $data['action'] : '').'" '.((isset($data['id'])) ? ' id="'.$data['id'].'"' : '').'>'.$this->spacing;
+        $return = '<form method="'.((isset($data['method'])) ? $data['method'] : 'POST').'" action="'.((isset($data['action'])) ? $data['action'] : '').'" '.(($this->type == TRUE) ? ' id="'.$this->class['method'].'"' : '').'>'.$this->spacing;
         echo $return;
     }
 
@@ -61,13 +61,10 @@ class Form{
             $class_name = explode("\\", $this->class['name']);
             $class_name = $class_name[0]."\\\\".$class_name[1];
 
-            $return .= "url: 'test.php?class=".$class_name."&method=".$this->class['method'].((!empty($this->data)) ? "&editor=$this->data" : '')."',".$this->spacing;
+            $return .= "url: 'test.php?class=".$class_name."&method=".$this->class['method']."',".$this->spacing;
             $return .= "data: $('form#".$this->class['method']."').serialize(),".$this->spacing;
-            //On choisit ce qu'on retourne avec ajax
-            //if($returnValue == "message")
-              //  $return .= 'success: function (e) { alert("'.$returnValue.'"); }'.$this->spacing;
             if($returnValue == "messageAlert")
-                $return .= 'success: function (e) { e = $.parseJSON(e); new Message(e[0], e[1], e[2]); }'.$this->spacing;
+                $return .= 'success: function (e) { e = $.parseJSON(e); new Message(e[0], e[1], e[2]); if(e[0] != "error") $("form")[0].reset(); }'.$this->spacing;
             else
                 $return .= 'success: function (e) { $("#'.$returnValue.'").text(e); }'.$this->spacing;
             $return .= '});'.$this->spacing;
@@ -84,7 +81,7 @@ class Form{
         $return = '';
 
         if($data['type'] != "submit" AND !empty($data['label'])){
-            $return .= '<label for="'.$data['name'].'" class="form-label">'.$data['label'].'</label>'.$this->spacing;
+            $return .= '<label for="'.$data['name'].'">'.$data['label'].'</label>'.$this->spacing;
         }
 
         $return .= '<textarea type="'.$data['type'].'" name="'.$data['name'].'"'.((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['placeholder'])) ? ' placeholder="'.$data['placeholder'].'"' : '') . ((isset($data['style'])) ? ' style="'.$data['style'].'"' : '') . ((isset($data['id'])) ? ' id="'.$data['id'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'. ((isset($data['value'])) ? ' value="'.$data['value'].'"' : '') .'</textarea>'.$this->spacing;
@@ -102,7 +99,7 @@ class Form{
             $return .= '<label for="'.$data['name'].'" class="form-label">'.$data['label'].'</label>'.$this->spacing;
         }
 
-        $return .= '<input type="'.$data['type'].'" name="'.$data['name'].'"'.((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['placeholder'])) ? ' placeholder="'.$data['placeholder'].'"' : '') . ((isset($data['style'])) ? ' style="'.$data['style'].'"' : '') . ((isset($data['id'])) ? ' id="'.$data['id'].'"' : '') . ((isset($data['value'])) ? ' value="'.$data['value'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'.$this->spacing;
+        $return .= '<input type="'.$data['type'].'" '.(($data['type'] == "submit") ? 'name="'.$this->class['method'].'"' : 'name="'.$data['name'].'"') . ((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['placeholder'])) ? ' placeholder="'.$data['placeholder'].'"' : '') . ((isset($data['style'])) ? ' style="'.$data['style'].'"' : '') . ((isset($data['id'])) ? ' id="'.$data['id'].'"' : '') . ((isset($data['value'])) ? ' value="'.$data['value'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'.$this->spacing;
 
         echo $return;
     }

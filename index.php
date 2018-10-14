@@ -28,12 +28,12 @@ require('app/Autoload.php');
             //Méthode sans ajax
             //$login = new Form('lambda\Users', 'login', array_merge($_POST, array('editor' => 'username,password')));
             //Méthode avec ajax
-            $login = new Form('lambda\Users', 'login', array(), true); 
+            $login = new Form('lambda\Users', 'login', array(), true);
         ?>
-        <p>Connaitre l'ID de la personne via son nom d'utilisateur</p>
+        <p>Entrez le prénom de l'utilisateur</p>
         <div id="messageDiv"></div>
         <?php  
-            $login->form(array('method' => 'post', 'id' => 'login'));
+            $login->form(array('method' => 'post'));
 
             $login->input(
                 array(
@@ -46,7 +46,6 @@ require('app/Autoload.php');
             $login->input(
                 array(
                     'type' => 'submit',
-                    'name' => 'login',
                     'value' => 'Valider'
                 )
             );

@@ -44,6 +44,15 @@ $login = new Form('lambda\Users', 'login', array_merge($_POST, array('editor' =>
     POST = FALSE (par défault)
 ______________________________
 
+Création du form
+
+$login->form(array('method' => 'post'));
+
+Le tableau contient les données à mettre dans l'entête <form> HTML
+'method' est obligatoire
+si 'action' n'existe pas, par défault 'action' sera vide (action="")
+______________________________
+
 Exemple de création d'un input
 
 $login->input(
