@@ -23,6 +23,11 @@ class Form{
     private $data = array();
 
     /**
+     * @var array $data_required Données du formulaire requises
+     */
+    private $data_required = array();
+
+    /**
      * @var array $data Données de la classe utilisée par le formulaire
      */
     private $class = array(
@@ -34,6 +39,16 @@ class Form{
      * @var string $spacing Saut de ligne HTML
      */
     private $spacing = "\n \t \t";
+
+    /**
+     * @param $data_name Nom du champ HTML
+     * @param $data_required Valeur de "required" du champ HTML
+     */
+    private function maj_required($data_name, $data_required){
+        $this->data_required[$data_name] = $data_required;
+        //On compare les deux tableaux pour savoir si on met à jour $_SESSION['required']
+        if(!identical_values($this->data_required, $_SESSION['required'])) $_SESSION['required'] = $this->data_required;
+    }
 
     /**
      * @param array $data : Informations du formulaire
@@ -64,9 +79,9 @@ class Form{
             $return .= "url: 'test.php?class=".$class_name."&method=".$this->class['method']."',".$this->spacing;
             $return .= "data: $('form#".$this->class['method']."').serialize(),".$this->spacing;
             if($returnValue == "messageAlert")
-                $return .= 'success: function (e) { e = $.parseJSON(e); new Message(e[0], e[1], e[2]); if(e[0] != "error") $("form")[0].reset(); }'.$this->spacing;
+                $return .= 'success: function (e) { e = $.parseJSON(e); new Message(e[0], e[1], e[2]); if(e[0] != "error") $("form#'.$this->class['method'].'")[0].reset(); }'.$this->spacing;
             else
-                $return .= 'success: function (e) { $("#'.$returnValue.'").html(e); }'.$this->spacing;
+                $return .= 'success: function (e) { $("#'.$returnValue.'").html(e); $("form#'.$this->class['method'].'")[0].reset(); }'.$this->spacing;
             $return .= '});'.$this->spacing;
             $return .= '});'.$this->spacing;
             $return .= '</script>'.$this->spacing;
@@ -78,6 +93,9 @@ class Form{
      * @param array $data : Informations du textarea
      */
     public function textarea($data = array()){
+        //On met à jour les champs requis
+        $this->maj_required($data['name'], $data['required']);
+
         $return = '';
 
         if($data['type'] != "submit" AND !empty($data['label'])){
@@ -97,6 +115,8 @@ class Form{
 
         if($data['type'] != "submit" AND !empty($data['label'])){
             $return .= '<label for="'.$data['name'].'" class="form-label">'.$data['label'].'</label>'.$this->spacing;
+            //On met à jour les champs requis
+            $this->maj_required($data['name'], $data['required']);
         }
 
         $return .= '<input type="'.$data['type'].'" '.(($data['type'] == "submit") ? 'name="'.$this->class['method'].'"' : 'name="'.$data['name'].'"') . ((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['placeholder'])) ? ' placeholder="'.$data['placeholder'].'"' : '') . ((isset($data['style'])) ? ' style="'.$data['style'].'"' : '') . ((isset($data['id'])) ? ' id="'.$data['id'].'"' : '') . ((isset($data['value'])) ? ' value="'.$data['value'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'.$this->spacing;
@@ -109,6 +129,7 @@ class Form{
      * @param array $options : Options du select
      */
     public function select($data = array(), $options = array()){
+        $this->maj_required($data['name'], $data['required']);
         $return = '';
 
         if(isset($data['label']) AND !empty($data['label'])){
@@ -158,7 +179,11 @@ class Form{
 
             //On vérifie qu'un formulaire a bien été envoyé
             if($_SERVER['REQUEST_METHOD'] == "POST"){
-                $this->send_data();
+                $data_required = array_intersect($this->data_required, $data);
+                if(array_not_empty($data_required))
+                    $this->send_data();
+                else
+                    return new Message('error', 'Un ou plusieurs champs est vide.',20);
             }
         }else{
             if(!empty($data)) $_SESSION['form'] = $data;
