@@ -40,7 +40,7 @@ class Form{
      */
     public function form($data = array()){
         $return = '<form method="'.((isset($data['method'])) ? $data['method'] : 'POST').'" action="'.((isset($data['action'])) ? $data['action'] : '').'" '.(($this->type == TRUE) ? ' id="'.$this->class['method'].'"' : '').'>'.$this->spacing;
-        echo $return;
+        printf($return);
     }
 
     /**
@@ -71,7 +71,7 @@ class Form{
             $return .= '});'.$this->spacing;
             $return .= '</script>'.$this->spacing;
         }
-        echo $return;
+        printf($return);
     }
 
     /**
@@ -86,7 +86,7 @@ class Form{
 
         $return .= '<textarea type="'.$data['type'].'" name="'.$data['name'].'"'.((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['placeholder'])) ? ' placeholder="'.$data['placeholder'].'"' : '') . ((isset($data['style'])) ? ' style="'.$data['style'].'"' : '') . ((isset($data['id'])) ? ' id="'.$data['id'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'. ((isset($data['value'])) ? ' value="'.$data['value'].'"' : '') .'</textarea>'.$this->spacing;
 
-        echo $return;
+        printf($return);
     }
 
     /**
@@ -101,7 +101,7 @@ class Form{
 
         $return .= '<input type="'.$data['type'].'" '.(($data['type'] == "submit") ? 'name="'.$this->class['method'].'"' : 'name="'.$data['name'].'"') . ((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['placeholder'])) ? ' placeholder="'.$data['placeholder'].'"' : '') . ((isset($data['style'])) ? ' style="'.$data['style'].'"' : '') . ((isset($data['id'])) ? ' id="'.$data['id'].'"' : '') . ((isset($data['value'])) ? ' value="'.$data['value'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'.$this->spacing;
 
-        echo $return;
+        printf($return);
     }
 
     /**
@@ -123,7 +123,7 @@ class Form{
 
         $return .= '</select>'.$this->spacing;
 
-        echo $return;
+        printf($return);
     }
 
     private function send_data(){
