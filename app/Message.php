@@ -36,6 +36,6 @@ class Message
         if($this->method < 20)
             echo json_encode(array($this->type, $this->message, $this->method));
         else
-            echo $this->message;
+            echo '<div class="alert '.$this->type.'">'.$this->message.'</div>';
     }
 }
