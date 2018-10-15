@@ -26,7 +26,7 @@ require('app/Autoload.php');
     <body>
         <?php
             //Méthode avec ajax
-            $login = new Form('lambda\Users', 'login', $_POST, false);
+            $login = new Form('lambda\Users', 'login', array('editor' => 'username'), true);
         ?>
         <p>Entrez le prénom de l'utilisateur</p>
         <div id="messageDiv"></div>
@@ -48,7 +48,7 @@ require('app/Autoload.php');
                 )
             );
 
-            $login->endform();
+            $login->endform('messageDiv');
         ?>
         <?php
             //Date

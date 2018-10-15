@@ -145,7 +145,7 @@ class Form{
         $this->class['method'] = $class_method;
         $this->type = $type;
 
-        //Si c'est un formulaire SANS AJAX on utilise $this⁻>data pour les données du formulaire
+        //Si c'est SANS ajax
         if($type == false){
             //Vérification s'il y a une sécurisation d'éditeur de texte
             if(isset($data['editor'])){
@@ -155,15 +155,13 @@ class Form{
             }
 
             $this->data = Secure_array($data, $validation);
-        }else{
-            //AJAX
-            //On stock dans $this->data les champs du formulaire à sécuriser différement
-            $this->data = $data['editor'];
-        }
 
-        //On vérifie qu'un formulaire a bien été envoyé
-        if($_SERVER['REQUEST_METHOD'] == "POST"){
-            $this->send_data();
+            //On vérifie qu'un formulaire a bien été envoyé
+            if($_SERVER['REQUEST_METHOD'] == "POST"){
+                $this->send_data();
+            }
+        }else{
+            if(!empty($data)) $_SESSION['form'] = $data;
         }
     }
 

@@ -1,6 +1,8 @@
 <?php
 namespace lambda;
 
+session_start();
+
 /**
  * Class Autoloader
  */
