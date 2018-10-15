@@ -66,7 +66,7 @@ class Form{
             if($returnValue == "messageAlert")
                 $return .= 'success: function (e) { e = $.parseJSON(e); new Message(e[0], e[1], e[2]); if(e[0] != "error") $("form")[0].reset(); }'.$this->spacing;
             else
-                $return .= 'success: function (e) { $("#'.$returnValue.'").text(e); }'.$this->spacing;
+                $return .= 'success: function (e) { $("#'.$returnValue.'").html(e); }'.$this->spacing;
             $return .= '});'.$this->spacing;
             $return .= '});'.$this->spacing;
             $return .= '</script>'.$this->spacing;
