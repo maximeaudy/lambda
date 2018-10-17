@@ -14,6 +14,10 @@ class Database extends Site{
      */
     private static $pdo;
 
+    /**
+     * Instance de PDO
+     * @return object|PDO
+     */
     private static function getPDO(){
         if(self::$pdo === null){
             try{
@@ -29,10 +33,11 @@ class Database extends Site{
     }
 
     /**
-     * @param $statement : Requête SQL
-     * @param bool $return : Retourne le résultat
-     * @param array $data : Données de la requête SQL
-     * @param bool $one : Retourne fetch ou fetchall
+     * Permet de générer les requêtes SQL et de retourner le résultat
+     * @param $statement string Requête SQL
+     * @param $return bool Retourne le résultat
+     * @param $data array Données de la requête SQL
+     * @param $one bool Retourne fetch ou fetchall
      * @return array|mixed
      */
     public static function query($statement, $return = false, $data = array(), $one = false){
@@ -49,6 +54,8 @@ class Database extends Site{
             }else{
                 return $sql->fetchAll();
             }
+        }else{
+            return 0;
         }
     }
 }
