@@ -38,7 +38,7 @@ class Form{
     /**
      * @var string $spacing Saut de ligne HTML
      */
-    private $spacing = "\n \t \t";
+    private $spacing = "\n";
 
     /**
      * @param $data_name Nom du champ HTML
@@ -50,6 +50,19 @@ class Form{
         if(!identical_values($this->data_required, $_SESSION['required'])) $_SESSION['required'] = $this->data_required;
     }
 
+    /**
+     * @param array $data Données du label du champ HTML en question
+     */
+    private function label($data = array()){
+        //On met à jour les champs requis
+        $this->maj_required($data['name'], $data['required']);
+
+        if($data['type'] != "submit" AND !empty($data['label'])){
+            $return = '<label for="'.$data['name'].'" class="form-label">'.$data['label'] . ((isset($data['required'])) ? '*' : '').'</label>'.$this->spacing;
+
+            printf($return);
+        }
+    }
     /**
      * @param array $data : Informations du formulaire
      */
@@ -86,23 +99,19 @@ class Form{
             $return .= '});'.$this->spacing;
             $return .= '</script>'.$this->spacing;
         }
+
         printf($return);
     }
+
 
     /**
      * @param array $data : Informations du textarea
      */
     public function textarea($data = array()){
-        //On met à jour les champs requis
-        $this->maj_required($data['name'], $data['required']);
+        //Création du label
+        $this->label($data);
 
-        $return = '';
-
-        if($data['type'] != "submit" AND !empty($data['label'])){
-            $return .= '<label for="'.$data['name'].'">'.$data['label'].'</label>'.$this->spacing;
-        }
-
-        $return .= '<textarea type="'.$data['type'].'" name="'.$data['name'].'"'.((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['placeholder'])) ? ' placeholder="'.$data['placeholder'].'"' : '') . ((isset($data['style'])) ? ' style="'.$data['style'].'"' : '') . ((isset($data['id'])) ? ' id="'.$data['id'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'. ((isset($data['value'])) ? ' value="'.$data['value'].'"' : '') .'</textarea>'.$this->spacing;
+        $return = '<textarea type="'.$data['type'].'" name="'.$data['name'].'"'.((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['placeholder'])) ? ' placeholder="'.$data['placeholder'].'"' : '') . ((isset($data['style'])) ? ' style="'.$data['style'].'"' : '') . ((isset($data['id'])) ? ' id="'.$data['id'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'. ((isset($data['value'])) ? ' value="'.$data['value'].'"' : '') .'</textarea>'.$this->spacing;
 
         printf($return);
     }
@@ -111,15 +120,10 @@ class Form{
      * @param array $data : Informations de l'input
      */
     public function input($data = array()){
-        $return = '';
+        //Création du label
+        $this->label($data);
 
-        if($data['type'] != "submit" AND !empty($data['label'])){
-            $return .= '<label for="'.$data['name'].'" class="form-label">'.$data['label'].'</label>'.$this->spacing;
-            //On met à jour les champs requis
-            $this->maj_required($data['name'], $data['required']);
-        }
-
-        $return .= '<input type="'.$data['type'].'" '.(($data['type'] == "submit") ? 'name="'.$this->class['method'].'"' : 'name="'.$data['name'].'"') . ((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['placeholder'])) ? ' placeholder="'.$data['placeholder'].'"' : '') . ((isset($data['style'])) ? ' style="'.$data['style'].'"' : '') . ((isset($data['id'])) ? ' id="'.$data['id'].'"' : '') . ((isset($data['value'])) ? ' value="'.$data['value'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'.$this->spacing;
+        $return = '<input type="'.$data['type'].'" '.(($data['type'] == "submit") ? 'name="'.$this->class['method'].'"' : 'name="'.$data['name'].'"') . ((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['placeholder'])) ? ' placeholder="'.$data['placeholder'].'"' : '') . ((isset($data['style'])) ? ' style="'.$data['style'].'"' : '') . ((isset($data['id'])) ? ' id="'.$data['id'].'"' : '') . ((isset($data['value'])) ? ' value="'.$data['value'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'.$this->spacing;
 
         printf($return);
     }
@@ -132,9 +136,8 @@ class Form{
         $this->maj_required($data['name'], $data['required']);
         $return = '';
 
-        if(isset($data['label']) AND !empty($data['label'])){
-            $return .= '<label for="'.$data['name'].'">'.$data['label'].'</label>'.$this->spacing;
-        }
+        //Création du label
+        $this->label($data);
 
         $return .= '<select name="'.$data['name'].'"'.((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'.$this->spacing;
         
