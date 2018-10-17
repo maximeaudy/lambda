@@ -13,8 +13,8 @@ class Users{
 	{
 		$sql = Database::query('SELECT * FROM users WHERE name = ?', TRUE, array($post['username']), TRUE);
 		if(!empty($sql)){
-		    return new Message('success', 'Utilisateur trouvé avec l\'ID : '.$sql['id'],20);
-		}else return new Message('error', 'Utilisateur introuvable',20);
+		    return new Message('success', 'Utilisateur trouvé avec l\'ID : '.$sql['id'],11);
+		}else return new Message('error', 'Utilisateur introuvable',11);
 	}
 
 	public function test($post)

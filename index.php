@@ -14,14 +14,14 @@ require('app/Autoload.php');
         <meta name="description" content="">
         <!-- CSS -->
         <link rel="stylesheet" href="assets/css/styles.css">
-        <link rel="stylesheet" href="assets/css/alert.css?<?= time(); ?>">
+        <link rel="stylesheet" href="assets/css/alert.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
         <link rel="stylesheet" href="assets/css/mystrap.css">
 
         <!-- JS -->
         <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="assets/js/alert.js?<?= time(); ?>"></script>
-        <script type="text/javascript" src="assets/js/Message.js?<?= time(); ?>"></script>
+        <script type="text/javascript" src="assets/js/alert.js"></script>
+        <script type="text/javascript" src="assets/js/Message.js"></script>
     </head>
     <body>
         <?php
@@ -30,14 +30,23 @@ require('app/Autoload.php');
         ?>
         <p>Entrez le prénom de l'utilisateur</p>
         <div id="messageDiv"></div>
-        <?php  
+        <?php
             $login->form(array('method' => 'post'));
 
             $login->input(
                 array(
                 'label' => 'Nom d\'utilisateur',
                 'name' => 'username',
+                'required' => true,
                 'type' => 'text'
+                )
+            );
+
+            $login->input(
+                array(
+                    'label' => 'Mot de passe',
+                    'name' => 'pass',
+                    'type' => 'password'
                 )
             );
 
@@ -48,7 +57,7 @@ require('app/Autoload.php');
                 )
             );
 
-            $login->endform('messageDiv');
+            $login->endform('messageAlert');
         ?>
         <?php
             //Date
