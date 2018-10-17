@@ -29,12 +29,11 @@ class Message
      * @param $message string Contenu du message
      * @param $method int ID de la méthode
      */
-    public function __construct($type, $message, $method)
+    public function __construct($type, $message, $class_method)
     {
         $this->type = $type;
         $this->message = $message;
-        $this->method = $method;
-
+        $this->method = $_SESSION['form#'.$class_method];
         $this->getMessage();
     }
 

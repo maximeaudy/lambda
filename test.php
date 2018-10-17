@@ -30,7 +30,7 @@ $data = $_POST;
         if(array_not_empty($data_required)) {
             $init = new $class(0);
             $test = $init->$method($data);
-        }else return new Message('error', 'Un ou plusieurs champs requis est vide.',11);
+        }else return new Message('error', 'Un ou plusieurs champs requis est vide.', $method);
 	}
 
 }else{

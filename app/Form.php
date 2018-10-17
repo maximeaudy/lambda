@@ -12,7 +12,7 @@ class Form{
     private $name;
 
     /**
-     * @var string $type Type du formulaire
+     * @var $type string Type du formulaire
      */
     private $type;
 
@@ -131,9 +131,9 @@ class Form{
 
     /**
      * Ferme le formulaire en rajoutant s'il faut ajax
-     * @param string $return Ce que retourne ajax
+     * @param $div string La div dans laquelle on insère le message
      */
-    public function endform($returnValue = 'none'){
+    public function endform($div = false){
         $return = '</form>'.$this->spacing;
 
         if($this->type == true){
@@ -150,10 +150,10 @@ class Form{
 
             $return .= "url: 'test.php?class=".$class_name."&method=".$this->class['method']."',".$this->spacing;
             $return .= "data: $('form#".$this->class['method']."').serialize(),".$this->spacing;
-            if($returnValue == "messageAlert")
+            if($this->type < 20)
                 $return .= 'success: function (e) { e = $.parseJSON(e); new Message(e[0], e[1], e[2]); if(e[0] != "error") $("form#'.$this->class['method'].'")[0].reset(); }'.$this->spacing;
             else
-                $return .= 'success: function (e) { $("#'.$returnValue.'").html(e); $("form#'.$this->class['method'].'")[0].reset(); }'.$this->spacing;
+                $return .= 'success: function (e) { $("#'.$div.'").html(e); $("form#'.$this->class['method'].'")[0].reset(); }'.$this->spacing;
             $return .= '});'.$this->spacing;
             $return .= '});'.$this->spacing;
             $return .= '</script>'.$this->spacing;
@@ -184,6 +184,9 @@ class Form{
         $this->class['name'] = $class_name;
         $this->class['method'] = $class_method;
         $this->type = $type;
+
+        //On créer une session avec la méthode d'affichage du formulaire en question
+        $_SESSION['form#'.$class_method] = $type;
 
         //Si c'est SANS ajax
         if($type == false){
