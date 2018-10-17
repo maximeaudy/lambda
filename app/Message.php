@@ -18,10 +18,17 @@ class Message
     private $message;
 
     /**
-     * @var int Méthode a utiliser (div, js...)
+     * Méthode a utiliser pour différents affichage
+     * @var int ID de la méthode
      */
     private $method;
 
+    /**
+     * Initialisation d'un message
+     * @param $type string Type du message
+     * @param $message string Contenu du message
+     * @param $method int ID de la méthode
+     */
     public function __construct($type, $message, $method)
     {
         $this->type = $type;
@@ -31,6 +38,9 @@ class Message
         $this->getMessage();
     }
 
+    /**
+     * Renvoie le message
+     */
     private function getMessage()
     {
         if($this->method < 20)
