@@ -4,7 +4,6 @@ namespace lambda;
 /**
  * Class Form : Gère les formulaires
  */
-
 class Form{
 
     /**
@@ -18,16 +17,19 @@ class Form{
     private $type;
 
     /**
+     * Données du formulaire
      * @var array $data Données du formulaire
      */
     private $data = array();
 
     /**
+     * Name des champs requis
      * @var array $data_required Données du formulaire requises
      */
     private $data_required = array();
 
     /**
+     * Données de la classe à utiliser
      * @var array $data Données de la classe utilisée par le formulaire
      */
     private $class = array(
@@ -36,22 +38,27 @@ class Form{
     );
 
     /**
+     * Saut de ligne HTML
      * @var string $spacing Saut de ligne HTML
      */
     private $spacing = "\n";
 
     /**
+     * Met à jour les champs requis dans la $_SESSION pour les form de type AJAX
      * @param $data_name Nom du champ HTML
      * @param $data_required Valeur de "required" du champ HTML
      */
     private function maj_required($data_name, $data_required){
-        $this->data_required[$data_name] = $data_required;
-        //On compare les deux tableaux pour savoir si on met à jour $_SESSION['required']
-        if(!identical_values($this->data_required, $_SESSION['required'])) $_SESSION['required'] = $this->data_required;
+        if($this->type == true) {
+            $this->data_required[$data_name] = $data_required;
+
+            //On compare les deux tableaux pour savoir si on met à jour $_SESSION['required']
+            if (!identical_values($this->data_required, $_SESSION['required'])) $_SESSION['required'] = $this->data_required;
+        }
     }
 
     /**
-     * @param array $data Données du label du champ HTML en question
+     * @param array $data Données du label et de l'input
      */
     private function label($data = array()){
         //On met à jour les champs requis
@@ -63,7 +70,58 @@ class Form{
             printf($return);
         }
     }
+
     /**
+     * Créer un textarea HTML
+     * @param array $data : Informations du textarea
+     */
+    public function textarea($data = array()){
+        //Création du label
+        $this->label($data);
+
+        $return = '<textarea type="'.$data['type'].'" name="'.$data['name'].'"'.((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['placeholder'])) ? ' placeholder="'.$data['placeholder'].'"' : '') . ((isset($data['style'])) ? ' style="'.$data['style'].'"' : '') . ((isset($data['id'])) ? ' id="'.$data['id'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'. ((isset($data['value'])) ? ' value="'.$data['value'].'"' : '') .'</textarea>'.$this->spacing;
+
+        printf($return);
+    }
+
+    /**
+     * Créer un input HTML
+     * @param array $data : Informations de l'input
+     */
+    public function input($data = array()){
+        //Création du label
+        $this->label($data);
+
+        $return = '<input type="'.$data['type'].'" '.(($data['type'] == "submit") ? 'name="'.$this->class['method'].'"' : 'name="'.$data['name'].'"') . ((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['placeholder'])) ? ' placeholder="'.$data['placeholder'].'"' : '') . ((isset($data['style'])) ? ' style="'.$data['style'].'"' : '') . ((isset($data['id'])) ? ' id="'.$data['id'].'"' : '') . ((isset($data['value'])) ? ' value="'.$data['value'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'.$this->spacing;
+
+        printf($return);
+    }
+
+    /**
+     * Créer un select HTML
+     * @param array $data : Informations du select
+     * @param array $options : Options du select
+     */
+    public function select($data = array(), $options = array()){
+        $this->maj_required($data['name'], $data['required']);
+        $return = '';
+
+        //Création du label
+        $this->label($data);
+
+        $return .= '<select name="'.$data['name'].'"'.((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'.$this->spacing;
+        
+        for($i = 0;$i < count($options);$i++){
+            $return .= '<option value="'.$options[$i]['value'].'">'.ucfirst($options[$i]['name']).'</option>'.$this->spacing;
+        }
+
+        $return .= '</select>'.$this->spacing;
+
+        printf($return);
+    }
+
+    /**
+     * Créer l'entête du formulaire HTML et paramètre ses configurations de la classe
      * @param array $data : Informations du formulaire
      */
     public function form($data = array()){
@@ -72,6 +130,7 @@ class Form{
     }
 
     /**
+     * Ferme le formulaire en rajoutant s'il faut ajax
      * @param string $return Ce que retourne ajax
      */
     public function endform($returnValue = 'none'){
@@ -103,53 +162,9 @@ class Form{
         printf($return);
     }
 
-
     /**
-     * @param array $data : Informations du textarea
+     * Permet d'envoyer les données à la classe du formulaire
      */
-    public function textarea($data = array()){
-        //Création du label
-        $this->label($data);
-
-        $return = '<textarea type="'.$data['type'].'" name="'.$data['name'].'"'.((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['placeholder'])) ? ' placeholder="'.$data['placeholder'].'"' : '') . ((isset($data['style'])) ? ' style="'.$data['style'].'"' : '') . ((isset($data['id'])) ? ' id="'.$data['id'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'. ((isset($data['value'])) ? ' value="'.$data['value'].'"' : '') .'</textarea>'.$this->spacing;
-
-        printf($return);
-    }
-
-    /**
-     * @param array $data : Informations de l'input
-     */
-    public function input($data = array()){
-        //Création du label
-        $this->label($data);
-
-        $return = '<input type="'.$data['type'].'" '.(($data['type'] == "submit") ? 'name="'.$this->class['method'].'"' : 'name="'.$data['name'].'"') . ((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['placeholder'])) ? ' placeholder="'.$data['placeholder'].'"' : '') . ((isset($data['style'])) ? ' style="'.$data['style'].'"' : '') . ((isset($data['id'])) ? ' id="'.$data['id'].'"' : '') . ((isset($data['value'])) ? ' value="'.$data['value'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'.$this->spacing;
-
-        printf($return);
-    }
-
-    /**
-     * @param array $data : Informations du select
-     * @param array $options : Options du select
-     */
-    public function select($data = array(), $options = array()){
-        $this->maj_required($data['name'], $data['required']);
-        $return = '';
-
-        //Création du label
-        $this->label($data);
-
-        $return .= '<select name="'.$data['name'].'"'.((isset($data['class'])) ? ' class="'.$data['class'].'"' : '') . ((isset($data['required'])) ? ' required' : '').'>'.$this->spacing;
-        
-        for($i = 0;$i < count($options);$i++){
-            $return .= '<option value="'.$options[$i]['value'].'">'.ucfirst($options[$i]['name']).'</option>'.$this->spacing;
-        }
-
-        $return .= '</select>'.$this->spacing;
-
-        printf($return);
-    }
-
     private function send_data(){
         $init = new $this->class['name'](0);
 
@@ -159,6 +174,7 @@ class Form{
     }
 
     /**
+     * Initialise un formulaire HTML
      * @param string $class_name Nom de la classe à utiliser
      * @param string $class_method Nom de la méthode à utiliser
      * @param array $data Données $_POST et $_FILES du formulaire
