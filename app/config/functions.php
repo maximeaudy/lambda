@@ -33,7 +33,6 @@ function Secure($string, $mode = false) {
 }
 
 function Secure_array($array, $mode = false){
-    $data = '';
     $array_new = array();
 
     foreach($array as $key => $value){
@@ -59,10 +58,12 @@ function Secure_array($array, $mode = false){
 }
 
 function identical_values($arrayA, $arrayB) {
-    sort($arrayA);
-    sort($arrayB);
+    if(is_array($arrayA) AND is_array($arrayB)){
+        sort($arrayA);
+        sort($arrayB);
 
-    return $arrayA == $arrayB;
+        return $arrayA == $arrayB;
+    }
 }
 
 function array_required_stay($arrayA, $arrayB){

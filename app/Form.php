@@ -49,11 +49,13 @@ class Form{
      * @param $data_required Valeur de "required" du champ HTML
      */
     private function maj_required($data_name, $data_required){
-        if($this->type == true) {
-            $this->data_required[$data_name] = $data_required;
+        $this->data_required[$data_name] = $data_required;
 
-            //On compare les deux tableaux pour savoir si on met à jour $_SESSION['required']
-            if (!identical_values($this->data_required, $_SESSION['required'])) $_SESSION['required'] = $this->data_required;
+        if(!empty($_SESSION['form#'.$this->class['method']]['required'])){
+            //On compare les deux tableaux pour savoir si on met à jour $_SESSION['form#method']['required']
+            if (!identical_values($this->data_required, $_SESSION['form#'.$this->class['method']]['required'])) $_SESSION['form#'.$this->class['method']]['required'] += $this->data_required;
+        }else{
+            $_SESSION['form#'.$this->class['method']] += array('required' => $this->data_required);
         }
     }
 
@@ -159,8 +161,9 @@ class Form{
             $return .= '});'.$this->spacing;
             $return .= '});'.$this->spacing;
             $return .= '</script>'.$this->spacing;
+        }else{
+            var_dump($this->data_required);
         }
-
         printf($return);
     }
 
@@ -185,32 +188,33 @@ class Form{
     function __construct($class_name, $class_method, $data = array(), $type = false){
         $this->class['name'] = $class_name;
         $this->class['method'] = $class_method;
+        $this->data = $data;
         $this->type = $type;
 
         //On créer une session avec la méthode d'affichage du formulaire en question
-        $_SESSION['form#'.$class_method] = $type;
+        $_SESSION['form#'.$class_method] = array('method' => $type);
 
         //Si c'est SANS ajax
-        if($type == false){
+        if($type == TRUE){
+            if(!empty($data)) $_SESSION['form#'.$class_method] += array('editor' => $data);
+        }else{
             //Vérification s'il y a une sécurisation d'éditeur de texte
-            if(isset($data['editor'])){
+            if(isset($this->data['editor'])){
                 $validation = true;
             }else{
                 $validation = false;
             }
 
-            $this->data = Secure_array($data, $validation);
+            $this->data = Secure_array($this->data, $validation);
 
             //On vérifie qu'un formulaire a bien été envoyé
             if($_SERVER['REQUEST_METHOD'] == "POST"){
-                $data_required = array_intersect($this->data_required, $data);
+                $data_required = array_intersect(array($_SESSION['form#'.$class_method]['required']), $data);
                 if(array_not_empty($data_required))
                     $this->send_data();
                 else
-                    return new Message('error', 'Un ou plusieurs champs est vide.',20);
+                    return new Message('error', 'Un ou plusieurs champs est vide.', 20);
             }
-        }else{
-            if(!empty($data)) $_SESSION['form'] = $data;
         }
     }
 

@@ -26,10 +26,9 @@ require('app/Autoload.php');
     <body>
         <?php
             //Méthode avec ajax
-            $login = new Form('lambda\Users', 'login', array('editor' => 'username'), 11);
+            $login = new Form('lambda\Users', 'login', '', 11);
         ?>
-        <p>Entrez le prénom de l'utilisateur</p>
-        <div id="messageDiv"></div>
+        <p>Espace membre</p>
         <?php
             $login->form(array('method' => 'post'));
 
@@ -46,6 +45,7 @@ require('app/Autoload.php');
                 array(
                     'label' => 'Mot de passe',
                     'name' => 'pass',
+                    'required' => true,
                     'type' => 'password'
                 )
             );
@@ -53,18 +53,11 @@ require('app/Autoload.php');
             $login->input(
                 array(
                     'type' => 'submit',
-                    'value' => 'Valider'
+                    'value' => 'Se connecter'
                 )
             );
 
-            $login->endform('messageDiv');
-        ?>
-        <?php
-            //Date
-            $date_now = '1538665976';
-            echo $date_now.'<br>';
-
-            echo Date::before($date_now).'<br>';
+            $login->endform();
         ?>
     </body>
 </html>

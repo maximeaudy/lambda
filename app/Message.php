@@ -33,7 +33,7 @@ class Message
     {
         $this->type = $type;
         $this->message = $message;
-        $this->method = $_SESSION['form#'.$class_method];
+        $this->method = $_SESSION['form#'.$class_method]['method'];
         $this->getMessage();
     }
 
@@ -42,8 +42,11 @@ class Message
      */
     private function getMessage()
     {
-        if($this->method < 20)
+        if($this->method == FALSE)
+            echo '<div class="alert '.$this->type.'">'.$this->message.'</div>';
+        elseif($this->method < 20){
             echo json_encode(array($this->type, $this->message, $this->method));
+        }
         else
             echo '<div class="alert '.$this->type.'">'.$this->message.'</div>';
     }
