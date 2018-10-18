@@ -152,7 +152,7 @@ class Form{
             $class_name = explode("\\", $this->class['name']);
             $class_name = $class_name[0]."\\\\".$class_name[1];
 
-            $return .= "url: 'test.php?class=".$class_name."&method=".$this->class['method']."',".$this->spacing;
+            $return .= "url: 'test.php?method=".encrypt_decrypt(1, $this->class['method'])."',".$this->spacing;
             $return .= "data: $('form#".$this->class['method']."').serialize(),".$this->spacing;
             if($this->type < 20)
                 $return .= 'success: function (e) { e = $.parseJSON(e); new Message(e[0], e[1], e[2]); if(e[0] != "error") $("form#'.$this->class['method'].'")[0].reset(); }'.$this->spacing;
@@ -161,9 +161,8 @@ class Form{
             $return .= '});'.$this->spacing;
             $return .= '});'.$this->spacing;
             $return .= '</script>'.$this->spacing;
-        }else{
-            var_dump($this->data_required);
         }
+
         printf($return);
     }
 
@@ -194,8 +193,12 @@ class Form{
         //On créer une session avec la méthode d'affichage du formulaire en question
         $_SESSION['form#'.$class_method] = array('method' => $type);
 
-        //Si c'est SANS ajax
+        //Si c'est AVEC ajax
         if($type == TRUE){
+            //On définit les paramètres de la classe
+            $_SESSION['form#'.$class_method] += array('class' => array('name' => $class_name, 'method' => $class_method));
+
+            //On définit les champs à sécuriser différement
             if(!empty($data)) $_SESSION['form#'.$class_method] += array('editor' => $data);
         }else{
             //Vérification s'il y a une sécurisation d'éditeur de texte
