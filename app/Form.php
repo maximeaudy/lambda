@@ -61,8 +61,10 @@ class Form{
      * @param array $data Données du label et de l'input
      */
     private function label($data = array()){
-        //On met à jour les champs requis
-        $this->maj_required($data['name'], $data['required']);
+        if($data['type'] != "submit") {
+            //On met à jour les champs requis
+            $this->maj_required($data['name'], $data['required']);
+        }
 
         if($data['type'] != "submit" AND !empty($data['label'])){
             $return = '<label for="'.$data['name'].'" class="form-label">'.$data['label'] . ((isset($data['required'])) ? '*' : '').'</label>'.$this->spacing;
