@@ -12,13 +12,6 @@ Pour démarrer le projet vous devez avoir :
 * PHP 5.6 (au minimum)
 * Serveur apache
 
-## Installation
-* Clonez le projet dans votre répertoire
-* Configurer le fichier [Autoload.php](https://github.com/maximeaudy/lambda/blob/master/app/Autoload.php)
-  * Informations de la bdd
-  * Lien du site
-  * Nom de votre projet
-
 ### Arborescence des fichiers :
 
 **/app :** Dossier contenant les classes PHP<br>
@@ -56,3 +49,11 @@ array('editor' => '8,8')
 4 = Type du formulaire Ajax ou Post<br>
     Ajax = TRUE<br>
     POST = FALSE (par défault)
+
+
+## Installation
+* Clonez le projet dans votre répertoire
+* Configurer le fichier [Autoload.php](https://github.com/maximeaudy/lambda/blob/master/app/Autoload.php)
+  * Informations de la bdd
+  * Lien du site
+  * Nom de votre projet
